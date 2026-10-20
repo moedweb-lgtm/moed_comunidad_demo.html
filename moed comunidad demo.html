@@ -1,0 +1,1298 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0f1113">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MOED+">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>MOED Hub — By MOED</title>
+<style>
+:root{--pink:#df7890;--pink2:#f8dce4;--ink:#202027;--muted:#8a8991;--bg:#f7f7f8;--line:#eeeaf0}
+*{box-sizing:border-box}body{margin:0;font:15px/1.4 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;color:var(--ink);background:#f2c7c0}
+button,input{font:inherit}button{cursor:pointer}.shell{max-width:1400px;min-height:100vh;margin:0 auto;background:white;display:grid;grid-template-columns:230px 1fr;box-shadow:0 0 30px #0002}
+.sidebar{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:100vh;background:#fff}.brand{font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--pink);padding:27px 30px}.profile{padding:22px 26px;border-bottom:1px solid var(--line)}.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f6c5d2,#b9d9d0);display:grid;place-items:center;font-size:24px;margin-bottom:12px}.profile small{color:var(--muted)}.nav{padding:22px 12px;display:grid;gap:5px}.nav button{border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:10px;color:#55535b;display:flex;gap:13px;align-items:center}.nav button.active,.nav button:hover{background:#fff0f4;color:var(--pink);font-weight:650}.nav .ico{width:22px;text-align:center;font-size:18px}.bottom{margin-top:auto}.main{min-width:0;background:var(--bg)}.topbar{height:76px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 28px}.topbar button{background:white;border:1px solid var(--line);border-radius:12px;padding:10px 13px}.search{width:min(250px,40vw);border:1px solid #ddd9df;border-radius:11px;padding:11px 14px;outline-color:var(--pink)}.content{padding:30px 34px}.heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:25px;flex-wrap:wrap}.heading h1{font-size:30px;letter-spacing:-.8px;margin:0}.controls{display:flex;align-items:center;gap:10px}.select,.filter{border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 13px;color:#555}.intro{background:linear-gradient(105deg,#f9e0e6,#fff4ed);border-radius:18px;padding:20px 22px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:12px}.intro h2{margin:0 0 4px;font-size:19px}.intro p{margin:0;color:#777}.primary{border:0;background:var(--pink);color:white;border-radius:10px;padding:11px 16px;font-weight:650}.primary:hover{filter:brightness(.96)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.community{background:#fff;border:1px solid #f0edf0;border-radius:15px;overflow:hidden;box-shadow:0 5px 16px #22200604;transition:.18s}.community:hover{transform:translateY(-2px);box-shadow:0 8px 24px #30202a0d}.art{height:160px;display:grid;place-items:center;position:relative;overflow:hidden}.art:before,.art:after{content:"";position:absolute;border-radius:50%;opacity:.7}.art:before{width:150px;height:150px;left:-20px;top:-45px;background:#fff9}.art:after{width:130px;height:130px;right:-10px;bottom:-55px;background:#fff8}.art span{font-size:66px;z-index:1;filter:drop-shadow(0 8px 3px #00000012)}.c1{background:#f4c6bd}.c2{background:#f5d2e8}.c3{background:#f9e3c9}.c4{background:#eccbd7}.c5{background:#f6d8e9}.c6{background:#eac8d3}.cardbody{padding:18px 19px 20px}.cardbody h3{margin:0 0 4px;font-size:19px}.meta{color:#929098;margin-bottom:15px;font-size:14px}.join{width:100%;border:1.5px solid var(--pink);background:white;color:var(--pink);border-radius:9px;padding:9px;font-weight:600}.join:hover,.join.joined{background:var(--pink);color:white}.joined-label{font-size:12px;color:#4f9b78;margin-top:8px;display:none}.join.joined+.joined-label{display:block}.empty{padding:35px;text-align:center;color:var(--muted);grid-column:1/-1}.post{background:white;border:1px solid var(--line);border-radius:13px;padding:17px 18px;margin-bottom:13px}.posthead{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px;margin-bottom:8px}.post p{white-space:pre-wrap;margin:0;overflow-wrap:anywhere}.hidden{display:none!important}.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#27242a;color:white;padding:12px 18px;border-radius:12px;box-shadow:0 8px 25px #0002;display:none;z-index:5}.modalback{position:fixed;inset:0;background:#201a1f77;display:none;place-items:center;padding:18px;z-index:10}.modal{background:white;border-radius:18px;padding:26px;width:min(420px,100%);box-shadow:0 20px 70px #0003}.modal h2{margin:0 0 5px}.modal p{color:var(--muted);margin-top:0}.modal input{width:100%;border:1px solid #ddd7de;border-radius:10px;padding:12px;margin:7px 0 12px}.modal .primary{width:100%;margin-top:6px}.close{float:right;border:0;background:#f5f2f4;border-radius:8px;padding:5px 10px}.switch{border:0;background:none;color:var(--pink);padding:12px 0 0}.mobilemenu{display:none}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{grid-template-columns:190px 1fr}.content{padding:25px 22px}.brand{padding-left:22px}}
+@media(max-width:650px){body{background:white}.shell{display:block}.sidebar{min-height:auto;position:sticky;top:0;z-index:4;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:14px 18px;font-size:22px}.profile{display:none}.nav{display:flex;overflow:auto;padding:0 10px 9px;gap:4px}.nav button{white-space:nowrap;padding:8px 10px;font-size:13px}.nav .ico{font-size:16px;width:auto}.bottom{display:none}.topbar{height:60px;padding:0 14px;justify-content:space-between}.search{width:48vw}.content{padding:22px 15px}.heading h1{font-size:26px}.intro{padding:16px;align-items:flex-start}.intro .primary{white-space:nowrap}.grid{grid-template-columns:1fr;gap:16px}.art{height:145px}.controls{width:100%;justify-content:space-between}.select{max-width:58%}}
+
+.authscreen{min-height:100vh;display:grid;place-items:center;padding:22px;background:linear-gradient(140deg,#f8dce4,#fff8f3 55%,#d9eee8)}
+.authcard{width:min(460px,100%);background:#fff;border:1px solid #ffffffaa;border-radius:22px;padding:30px;box-shadow:0 18px 55px #47323b16}
+.authbrand{font-size:27px;font-weight:900;letter-spacing:-1px;color:var(--pink)}.authcard h1{font-size:27px;letter-spacing:-.7px;margin:25px 0 6px}.authcard p{color:var(--muted);margin:0 0 18px}.authcard label{display:block;font-size:13px;font-weight:650;margin:12px 0 5px}.authcard input{width:100%;border:1px solid #e4dce2;border-radius:10px;padding:12px;outline-color:var(--pink)}.authcard .primary{width:100%;margin-top:14px}.googlebtn{width:100%;margin-top:9px;border:1px solid #ded9df;border-radius:10px;background:white;padding:11px;font-weight:650}.authswitch{display:block;border:0;background:transparent;color:var(--pink);margin:12px auto 0}.authhint{font-size:12px!important;background:#fff6e9;padding:10px;border-radius:9px;margin-top:14px!important}.adminbox{margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}.adminbox summary{color:#777;font-size:13px;cursor:pointer}.adminbox input{margin-top:9px}.tiny{font-size:12px;color:#999}
+@media(max-width:650px){.authcard{padding:24px}}
+/* MOED Hub · paleta azul tecnológico */
+:root{--pink:#3478f6;--pink2:#dceaff;--ink:#14213a;--muted:#68758b;--bg:#f4f7fc;--line:#dfe7f2}
+body{background:linear-gradient(135deg,#dceaff,#eef5ff 55%,#c8e2ff)}
+.shell{background:#fff;box-shadow:0 18px 60px #163c7a18}
+.sidebar{background:#fff;border-right-color:#e0e9f6}
+.brand,.authbrand{color:#3478f6}
+.profile{border-bottom-color:#e0e9f6}
+.avatar{background:linear-gradient(135deg,#3478f6,#76b7ff);color:white}
+.nav button{color:#53627a}
+.nav button.active,.nav button:hover{background:#eaf2ff;color:#245edb}
+.main{background:#f4f7fc}
+.topbar{border-bottom-color:#e0e9f6}
+.topbar button,.googlebtn{border-color:#dbe5f2;color:#243754}
+.search,.modal input,.authcard input{border-color:#d5e0ef;outline-color:#3478f6}
+.intro{background:linear-gradient(110deg,#e2edff,#f4f8ff 70%,#e4f4ff);border:1px solid #dce8fb}
+.intro p{color:#63738d}
+.primary{background:linear-gradient(135deg,#3478f6,#245edb);box-shadow:0 4px 12px #3478f626}
+.primary:hover{filter:brightness(.97);box-shadow:0 6px 16px #3478f638}
+.community{border-color:#e0e9f6;box-shadow:0 5px 18px #183d7210}
+.c1{background:linear-gradient(135deg,#c8ddff,#eaf3ff)}
+.c2{background:linear-gradient(135deg,#bfe5ff,#e6f6ff)}
+.c3{background:linear-gradient(135deg,#b8d1ff,#e5edff)}
+.c4{background:linear-gradient(135deg,#c9e5f8,#e7f4ff)}
+.c5{background:linear-gradient(135deg,#d5e3ff,#eef4ff)}
+.c6{background:linear-gradient(135deg,#b7d7ff,#e4efff)}
+.join{border-color:#3478f6;color:#2867e8}
+.join:hover,.join.joined{background:#3478f6;color:#fff}
+.joined-label{color:#2776bd}
+.notice{background:#142b4d;box-shadow:0 8px 25px #102c5526}
+.modalback{background:#10284b88}
+.modal{border:1px solid #e0e9f6;box-shadow:0 20px 70px #15345c2b}
+.close{background:#edf3fc;color:#2b456a}
+.switch,.authswitch{color:#2867e8}
+.authscreen{background:radial-gradient(circle at 15% 10%,#dceaff 0,transparent 35%),linear-gradient(140deg,#e7f0ff,#f7faff 55%,#cfe8ff)}
+.authcard{border-color:#fff;box-shadow:0 22px 65px #173d751a}
+.authcard h1{color:#14213a}
+.authhint{background:#edf5ff;color:#405879;border:1px solid #d9e9ff}
+.adminbox{border-top-color:#e0e9f6}
+.adminbox summary{color:#5d6e87}
+@media(max-width:650px){body{background:#fff}.sidebar{background:#fff}.nav{background:#fff}}
+
+/* Mejoras: foco visible, movimiento reducido, estados deshabilitados, modal */
+:focus-visible{outline:3px solid #3478f6;outline-offset:2px}
+.nav button:focus-visible,.join:focus-visible{outline-offset:-2px}
+.primary:disabled{opacity:.6;cursor:wait}
+.notice{z-index:20;max-width:90vw;text-align:center}
+.modal label{display:block;font-size:13px;font-weight:650;margin-top:10px}
+.modal textarea,.modal select{width:100%;border:1px solid #d5e0ef;border-radius:10px;padding:12px;font:inherit;margin:5px 0 12px;background:#fff}
+@media(max-width:650px){.nav.bottom{display:flex;overflow:auto;padding:0 10px 9px;gap:4px;margin-top:0}.nav.bottom button{white-space:nowrap;padding:8px 10px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.community:hover{transform:none}}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tab{border:1px solid #e4dce2;background:#fff;border-radius:20px;padding:9px 16px;font:inherit;font-weight:650;cursor:pointer}
+.tab.active{background:#3478f6;color:#fff;border-color:#3478f6}
+.chatbox{background:#efe9e2;border-radius:16px;padding:14px;height:min(52vh,480px);overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+.msg{max-width:80%;padding:7px 11px 4px;border-radius:12px;background:#fff;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.08);overflow-wrap:anywhere;white-space:pre-wrap}
+.msg.me{align-self:flex-end;background:#d9fdd3}
+.msg b{display:block;font-size:12px;color:#3478f6;margin-bottom:2px}
+.msg small{display:block;text-align:right;font-size:10px;color:#8a8991;margin-top:2px;white-space:normal}
+.msgdel{border:0;background:none;color:#b0aab0;cursor:pointer;font-size:10px;padding:0 0 0 6px}
+.day{align-self:center;font-size:11px;color:#6f6870;background:#e1dbd3;border-radius:8px;padding:2px 8px;margin:6px 0}
+.chatform{display:flex;gap:8px;margin-top:10px}
+.chatform input{flex:1;min-width:0;border:1px solid #d5e0ef;border-radius:22px;padding:12px 16px;font:inherit}
+.chatform .primary{width:auto;margin:0;padding:0 20px;border-radius:22px}
+.chatform input:disabled,.chatform .primary:disabled{opacity:.6}
+.post.surprise{border:2px solid #ffc83d;background:#fffaf0}
+.fab{position:fixed;right:18px;bottom:18px;z-index:15;width:58px;height:58px;border-radius:50%;border:0;font-size:25px;color:#fff;background:linear-gradient(135deg,#3478f6,#a66cff);box-shadow:0 8px 24px rgba(52,120,246,.45);cursor:pointer;animation:glow 2.4s infinite}
+@keyframes glow{50%{box-shadow:0 8px 34px rgba(166,108,255,.75)}}
+.drawerback{position:fixed;inset:0;background:rgba(20,20,30,.5);z-index:25;display:flex;justify-content:flex-end;align-items:flex-end}
+.drawer{background:#fff;width:min(440px,100%);max-height:92vh;overflow-y:auto;border-radius:22px 22px 0 0;padding-bottom:18px}
+@media(min-width:700px){.drawerback{align-items:stretch}.drawer{border-radius:22px 0 0 22px;max-height:none;height:100%}}
+.dhead{background:linear-gradient(135deg,#1f2a44,#5b3fd0);color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;border-radius:22px 22px 0 0}
+.dhead h2{margin:0;font-size:19px}
+.dhead button{border:0;background:rgba(255,255,255,.18);color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}
+.tile{background:#f5f8ff;border-radius:14px;padding:14px}
+.tile b{display:block;font-size:26px;color:#2b4fd1}
+.tile span{font-size:12px;color:#6f6870}
+.dsec{padding:0 16px 14px}
+.dsec h3{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#8a8991;margin:6px 0 10px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.act{border:1px solid #dfe6f5;background:#fff;border-radius:12px;padding:12px 8px;font:inherit;font-weight:650;cursor:pointer}
+.act:hover{background:#f5f8ff}
+.switchrow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#f5f8ff;border-radius:12px;padding:12px 14px}
+.switch{position:relative;width:48px;height:28px;border-radius:14px;border:0;background:#c8ced9;cursor:pointer;flex:none}
+.switch::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s}
+.switch.on{background:#2ecc71}.switch.on::after{left:23px}
+.drawer textarea{width:100%;border:1px solid #d5e0ef;border-radius:10px;padding:12px;font:inherit;margin-bottom:8px}
+@media(prefers-reduced-motion:reduce){.fab{animation:none}}
+/* ===== Hub 2.0: tema, componentes nuevos, navegación inferior ===== */
+:root{--acc:#3478f6}
+.hidden{display:none!important}
+.primary,.tab.active{background:var(--acc)!important;border-color:var(--acc)!important;color:#fff!important}
+.join{border-color:var(--acc);color:var(--acc)}.join:hover,.join.joined{background:var(--acc);color:#fff}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:transparent;color:inherit;border-radius:20px;padding:6px 13px;font-weight:600;cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.card2{padding:20px}.card2 h3{margin:0 0 12px;font-size:17px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:20px}
+.li{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);cursor:default}
+.li[data-go]{cursor:pointer}
+.fl label{display:block;font-size:13px;font-weight:650;margin-top:10px}
+.fl input,.fl textarea,.fl select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;margin-top:4px;font:inherit;background:#fff;color:inherit}
+.cmbox{margin-top:10px;border-top:1px solid var(--line);padding-top:6px}
+.bn{position:absolute;top:-6px;right:-6px;background:#ff4d6d;color:#fff;border-radius:10px;font-size:11px;padding:1px 6px}
+#bell{position:relative}
+.npanel{position:fixed;top:68px;right:18px;width:min(380px,calc(100vw - 24px));max-height:78vh;overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 60px #0004;z-index:30;padding:14px}
+.pfav{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--acc),#76b7ff);display:grid;place-items:center;font-size:38px;color:#fff}
+.avpick button{border:1px solid var(--line);background:transparent;border-radius:10px;font-size:22px;padding:4px 8px}
+.avpick button.on{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc)}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid transparent;cursor:pointer}.sw.on{border-color:var(--ink);box-shadow:0 0 0 2px #fff inset}
+.bdg{border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-weight:650}
+.zone{text-align:left;padding:16px;line-height:1.3}
+.rm{display:flex;gap:12px;align-items:flex-start;padding:10px 0}.rm i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;flex:none;font-weight:800}
+/* modo oscuro */
+body.dark{--ink:#e7eefc;--muted:#8da2c8;--line:#1c3166;color:var(--ink);background:radial-gradient(circle at 20% 0,#0f2a63,#050b1c 65%)}
+body.dark .shell,body.dark .sidebar,body.dark .topbar,body.dark .nav{background:#0a1530;border-color:#1c3166}
+body.dark .main{background:#071027}
+body.dark .community,body.dark .post,body.dark .modal,body.dark .authcard,body.dark .drawer,body.dark .npanel{background:#0e1b3a;border-color:#1c3166;color:var(--ink)}
+body.dark .intro{background:linear-gradient(110deg,#10265a,#0c1a3d);border-color:#1c3166}body.dark .intro p,body.dark .cardbody p,body.dark .meta{color:#9db0d4!important}
+body.dark input,body.dark textarea,body.dark select,body.dark .select,body.dark .filter,body.dark .tab,body.dark .topbar button,body.dark .act,body.dark .googlebtn,body.dark .fl input,body.dark .fl textarea,body.dark .fl select{background:#0b1733;color:var(--ink);border-color:#22407a}
+body.dark .nav button{color:#a9bbdd}body.dark .nav button.active,body.dark .nav button:hover{background:#12306b;color:#8fc0ff}
+body.dark .tile,body.dark .switchrow{background:#0b1733}body.dark .tile b{color:#7db2ff}body.dark .tile span,body.dark .tiny{color:#8da2c8}
+body.dark .chatbox{background:#0a1530}body.dark .msg{background:#12224a;color:var(--ink)}body.dark .msg.me{background:#1d4fb8}
+body.dark .post.surprise{background:#2a2410;border-color:#ffc83d}body.dark .post strong,body.dark .brand,body.dark .authcard h1{color:#cfe0ff!important}
+body.dark #manageList>div,body.dark #codeListLogged>div{border-color:#1c3166!important}body.dark .empty{color:#8da2c8;background:transparent!important}
+body.dark .heading h1,body.dark h2,body.dark h3{color:var(--ink)}body.dark .close{background:#12224a;color:#cfe0ff}
+body.dark .sw.on{box-shadow:0 0 0 2px #0a1530 inset}
+@media(max-width:1000px){.grid2{grid-template-columns:1fr}}
+@media(max-width:650px){
+.sidebar{position:static}.brand{padding:12px 16px}
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:18;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;overflow:visible;gap:0}
+#nav button{flex-direction:column;gap:2px;font-size:11px;padding:6px 2px;flex:1;align-items:center}
+.content{padding-bottom:96px}.fab{bottom:88px}.npanel{top:62px;right:12px}
+.topbar{gap:6px}.search{width:40vw}}
+/* ===== Estilo app: historias, tarjetas, hexágonos, barra flotante ===== */
+body.dark{background:#070b18}
+body.dark .shell,body.dark .sidebar,body.dark .topbar,body.dark .main{background:#0b1020}
+body.dark .community,body.dark .post,body.dark .npanel,body.dark .drawer{background:#141b33;border-color:#1f2a4d}
+.community,.post{border-radius:20px}
+.plus{background:var(--acc)!important;color:#fff!important;border-radius:16px!important;justify-content:center}
+.stories{display:flex;gap:14px;overflow-x:auto;padding:4px 2px 16px;margin-bottom:6px;scrollbar-width:none}
+.stories::-webkit-scrollbar{display:none}
+.story{background:none;border:0;color:inherit;display:grid;justify-items:center;gap:6px;width:68px;flex:none;padding:0}
+.story small{font-size:12px;max-width:68px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ring{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:#141b33;border:3px solid var(--acc)}
+body:not(.dark) .ring{background:#eef3fc}
+.ring.add{border-style:dashed;font-size:26px;color:var(--acc)}
+.fcard{padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}.fcard p{margin:8px 0 0}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--acc),#8b5cf6);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+.posthead{display:flex;align-items:center;gap:10px}
+.stat{background:#1a2342;border-radius:14px;padding:10px 14px;text-align:center;min-width:76px}.stat b{display:block;font-size:18px}.stat small{color:var(--muted);font-size:12px}
+body:not(.dark) .stat{background:#eef3fc}
+.pfav{clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);border-radius:0;width:96px;height:96px}
+.hexb{display:grid;justify-items:center;gap:4px;width:74px;text-align:center}
+.hexb i{font-style:normal;width:54px;height:60px;display:grid;place-items:center;font-size:24px;background:linear-gradient(160deg,var(--acc),#8b5cf6);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.hexb small{font-size:11px;line-height:1.2}
+.art span{width:78px;height:86px;display:grid;place-items:center;font-size:40px;background:#0b1020cc;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);filter:none!important}
+.evcard{color:#fff!important;border:0!important;background:linear-gradient(150deg,#3a2c9a,#7b2fa0 60%,#b13a72)!important}
+.evcard:nth-child(3n+2){background:linear-gradient(150deg,#12467f,#1f7fb5 60%,#27a3a0)!important}
+.evcard:nth-child(3n){background:linear-gradient(150deg,#7a2740,#b4452f 60%,#d17a2f)!important}
+.evcard h3{font-size:22px!important;color:#fff!important}
+.evcard .tiny,.evcard p{color:#f1e8ff!important}
+.evcard .filter{background:#ffffff22!important;color:#fff!important;border-color:#ffffff40!important}
+.evcard .join{background:#fff;color:#3a2c9a;border-color:#fff}.evcard .join.joined{background:#ffffff33;color:#fff}
+@media(max-width:650px){
+.shell{display:block}
+#nav{left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;border:1px solid #1f2a4d!important;border-radius:26px!important;padding:8px 10px!important;background:#141b33!important;box-shadow:0 10px 30px #0006;gap:2px}
+body:not(.dark) #nav{background:#fff!important;border-color:#dfe7f2!important}
+#nav button{font-size:0!important;align-items:center;justify-content:center;padding:10px 0!important;border-radius:16px}
+#nav .ico{font-size:22px!important;width:auto}
+#nav [data-page="Lab"],#nav #moderatorNav{display:none!important}
+#nav .plus{flex:0 0 58px;padding:12px 0!important}
+.content{padding-bottom:110px}.fab{bottom:96px}}
+
+/* ===================================================================
+   MOED+ · rediseño estilo app social (oscuro, tarjetas, historias,
+   barra inferior flotante). Va al final para tener la última palabra.
+   =================================================================== */
+body.app{--bg:#f3f5f8;--card:#fff;--card2:#eef1f5;--ink:#14171a;--muted:#6b7380;--line:#e3e7ec;--shade:rgba(20,30,50,.14);color:var(--ink);background:#dde3ea;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"SF Pro Text","Segoe UI",Arial,sans-serif}
+body.app.dark{--bg:#0f1113;--card:#1b1e22;--card2:#262a30;--ink:#f3f5f7;--muted:#8d949e;--line:#2a2e34;--shade:rgba(0,0,0,.55);background:#050607}
+
+/* --- estructura: una columna tipo app, centrada en pantallas grandes --- */
+body.app.app .shell{grid-template-columns:minmax(0,1fr)!important;max-width:560px;min-height:100vh;background:var(--bg);box-shadow:0 0 0 1px var(--line),0 30px 80px var(--shade)}
+body.app.app .sidebar{display:block;min-height:0;padding:0;border:0;background:none;position:static!important}
+body.app.app .sidebar .profile,body.app.app .sidebar .nav.bottom{display:none!important}
+body.app.app .main{background:var(--bg);min-width:0}
+body.app.app .content{padding:4px 14px 120px}
+body.app.app .heading{margin-bottom:14px;gap:10px}
+body.app.app .heading h1{font-size:24px;letter-spacing:-.5px}
+body.app.app[data-page="Inicio"] .heading{display:none}
+body.app.app .sec{margin:8px 4px 10px;font-size:16px}
+body.app.app .greet{margin:2px 2px 12px}
+body.app.app .greet h2{margin:0;font-size:22px;letter-spacing:-.4px}
+body.app.app .greet p{margin:2px 0 0;color:var(--muted)}
+
+/* --- cabecera --- */
+body.app.app .topbar{position:sticky;top:0;z-index:12;height:60px;padding:0 16px;justify-content:space-between;background:var(--bg);border:0;gap:8px}
+body.app.app .brand{padding:0;font-size:28px;font-weight:800;letter-spacing:-.8px;color:var(--acc)!important}
+body.app.app .brand sup{font-size:.5em;position:relative;top:-.15em;margin-left:1px;vertical-align:top}
+body.app.app .topact{display:flex;gap:8px;align-items:center}
+body.app.app .topbar button{width:42px;height:42px;padding:0;border:0;border-radius:50%;background:var(--card);color:var(--ink);display:grid;place-items:center;font-size:17px;position:relative}
+body.app.app .bn{top:-3px;right:-3px;min-width:18px;text-align:center;font-size:10px;padding:1px 5px;background:#ff4d4f;border:2px solid var(--bg)}
+body.app.app .ic{width:22px;height:22px;flex:none}
+body.app.app .topbar .ic{width:21px;height:21px}
+
+/* --- controles, búsqueda, pestañas --- */
+body.app.app .controls{width:100%;display:flex;flex-wrap:wrap;gap:8px}
+body.app.app .controls span{display:none}
+body.app.app .search{flex:1 1 100%;width:100%;background:var(--card);border:0;border-radius:14px;padding:13px 16px;color:var(--ink)}
+body.app.app .select,body.app.app .filter{background:var(--card2);border:0;border-radius:12px;padding:10px 14px;color:var(--ink)}
+body.app.app .controls .select{flex:1}
+body.app.app .tab{background:var(--card);border:0;color:var(--muted);border-radius:20px}
+body.app.app .chip{background:var(--card2);border:0;color:var(--ink)}
+body.app.app .primary{border-radius:14px;box-shadow:none}
+body.app.app .act{background:var(--card2);border:0;border-radius:16px;padding:15px 10px;color:var(--ink)}
+body.app.app .act:hover{background:var(--line)}
+
+/* --- tarjetas --- */
+body.app.app .community,body.app.app .post{background:var(--card);border:0;border-radius:22px;box-shadow:none;color:var(--ink)}
+body.app.app .community:hover{transform:none;box-shadow:none}
+body.app.app .card2{padding:18px}
+body.app.app .card2 h3{font-size:16px}
+body.app.app .intro{background:var(--card);border:0;border-radius:22px;padding:18px;margin-bottom:14px;color:var(--ink)}
+body.app.app .intro p,body.app.app .cardbody p,body.app.app .meta{color:var(--muted)!important}
+body.app.app .grid,body.app.app .grid2{grid-template-columns:1fr;gap:14px}
+body.app.app .empty{background:transparent!important;color:var(--muted)}
+body.app.app .tile{background:var(--card2);border-radius:16px}
+body.app.app .tile b{color:var(--acc)}
+body.app.app .tile span{color:var(--muted)}
+body.app.app .li{border-bottom-color:var(--line)}
+
+/* colores de las comunidades (saturados, como las fotos del diseño) */
+body.app.app .c1{background:linear-gradient(135deg,#2a93e8,#0e63b5)}
+body.app.app .c2{background:linear-gradient(135deg,#9ae6da,#4fbfae)}
+body.app.app .c3{background:linear-gradient(135deg,#ffc15e,#ff8a3d)}
+body.app.app .c4{background:linear-gradient(135deg,#a99bff,#6a5cf0)}
+body.app.app .c5{background:linear-gradient(135deg,#ff9bb0,#ff5f7e)}
+body.app.app .c6{background:linear-gradient(135deg,#5fd3ee,#1a9ad0)}
+body.app.app .art{height:132px}
+body.app.app .cardbody{padding:14px 16px 16px}
+body.app.app .cardbody h3{font-size:18px}
+body.app.app .join{border:1.5px solid var(--acc);background:transparent;color:var(--acc);border-radius:14px;padding:11px;font-weight:700}
+body.app.app .join:hover,body.app.app .join.joined{background:var(--acc);color:#fff}
+
+/* --- historias --- */
+body.app.app .stories{background:var(--card);border-radius:22px;padding:14px 14px 12px;margin-bottom:14px;gap:14px}
+body.app.app .story{color:var(--ink)}
+body.app.app .story small{color:var(--muted)}
+body.app.app .ring{position:relative;width:62px;height:62px;border:2px solid var(--acc);box-shadow:inset 0 0 0 3px var(--card);background:var(--card2);font-size:26px}
+body.app.app .ring.add{border-style:solid;color:var(--ink)}
+body.app.app .ring.add::after{content:"+";position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;font-size:16px;font-weight:700;line-height:17px;text-align:center;border:2px solid var(--card)}
+
+/* --- publicaciones --- */
+body.app.app .post{padding:14px;margin-bottom:14px}
+body.app.app .posthead{display:flex;align-items:center;gap:10px;color:var(--muted);margin:0 0 10px;font-size:13px}
+body.app.app .posthead strong,body.app.app .post strong{color:var(--ink)!important;font-size:15px}
+body.app.app .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--acc),#8fd0ff);color:#fff}
+body.app.app .av.emo{background:var(--card2);border:2px solid var(--acc);box-shadow:inset 0 0 0 2px var(--card);font-size:19px}
+body.app.app .dots{margin-left:auto;color:var(--muted);letter-spacing:1px;font-size:12px;font-weight:800}
+body.app.app .media{position:relative;height:200px;border-radius:18px;margin:0 0 12px;display:grid;place-items:center;overflow:hidden}
+body.app.app .media::before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;left:-40px;top:-60px;background:#ffffff26}
+body.app.app .media::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-30px;bottom:-60px;background:#ffffff1f}
+body.app.app .media span{position:relative;z-index:1;font-size:72px;filter:drop-shadow(0 10px 8px #0003)}
+body.app.app .post p{margin:0;line-height:1.45;color:var(--ink)}
+body.app.app .post p+.acts2{margin-top:12px}
+body.app.app .more{color:var(--muted)}
+body.app.app .acts2{display:flex;align-items:center;gap:16px;font-size:14px;font-weight:650;margin:2px 0 10px;flex-wrap:wrap}
+body.app.app .acts2>span,body.app.app .ab{display:inline-flex;align-items:center;gap:6px}
+body.app.app .acts2 .sp{flex:1}
+body.app.app .ab{border:0;background:none;color:var(--ink);padding:4px 0;font-weight:650;font-size:14px;cursor:pointer}
+body.app.app .ab.txt{color:var(--muted);font-size:13px}
+body.app.app .ab.liked .ic{fill:#ff4d6d;stroke:#ff4d6d}
+body.app.app .ab.saved .ic{fill:var(--acc);stroke:var(--acc)}
+body.app.app .post.surprise{border:2px solid #ffc83d;background:rgba(255,200,61,.1)}
+body.app.app .cmbox{border-top-color:var(--line)}
+
+/* --- chat --- */
+body.app.app .chatbox{background:var(--card);border-radius:22px;padding:14px}
+body.app.app .msg{background:var(--card2);color:var(--ink);box-shadow:none;border-radius:16px 16px 16px 6px;padding:8px 12px 5px}
+body.app.app .msg.me{background:var(--acc);color:#fff;border-radius:16px 16px 6px 16px}
+body.app.app .msg b{color:var(--acc)}
+body.app.app .msg small{color:var(--muted)}
+body.app.app .msg.me small,body.app.app .msg.me .msgdel{color:#ffffffb8}
+body.app.app .day{background:var(--card2);color:var(--muted)}
+body.app.app .chatform input{background:var(--card);border:0;color:var(--ink);padding:13px 18px}
+body.app.app .chatform .primary{width:46px;height:46px;padding:0;border-radius:50%}
+
+/* --- perfil --- */
+body.app.app .pfhead{display:flex;align-items:center;gap:14px}
+body.app.app .pfav{clip-path:none;border-radius:50%;width:84px;height:84px;font-size:38px;background:linear-gradient(135deg,var(--acc),#8fd0ff);flex:none}
+body.app.app .pfstats{display:flex;gap:8px;flex:1;min-width:0}
+body.app.app .stat{background:var(--card2);border-radius:16px;flex:1;min-width:0;padding:12px 6px}
+body.app.app .stat b{font-size:19px}
+body.app.app .pfinfo{margin-top:12px}
+body.app.app .pfinfo strong{font-size:18px}
+body.app.app #pfCheck{vertical-align:-3px;margin-left:5px}
+body.app.app .vf{width:18px;height:18px}
+body.app.app #pfBioView{margin-top:6px;line-height:1.4}
+body.app.app .logout{width:100%;margin-top:6px;padding:14px;border-radius:16px;color:#ff6b6b;font-weight:700}
+
+/* --- eventos --- */
+body.app.app .evcard{background:linear-gradient(150deg,#1e7fd2,#2b9be0 60%,#4cc3df)!important;border-radius:22px}
+body.app.app .evcard:nth-child(3n+2){background:linear-gradient(150deg,#6b5cf0,#8b7bff 60%,#b49bff)!important}
+body.app.app .evcard:nth-child(3n){background:linear-gradient(150deg,#16a394,#2cc2a8 60%,#7fe0c0)!important}
+body.app.app .evcard .join{background:#fff;color:#12202e;border-color:#fff}
+body.app.app .evcard .join.joined{background:#ffffff33;color:#fff}
+
+/* --- barra inferior flotante --- */
+body.app.app #nav{position:fixed!important;left:50%!important;right:auto!important;transform:translateX(-50%);width:min(536px,calc(100vw - 24px));bottom:calc(12px + env(safe-area-inset-bottom))!important;z-index:18;display:flex;justify-content:space-between;align-items:center;gap:2px;padding:8px 10px!important;background:var(--card)!important;border:1px solid var(--line)!important;border-radius:30px!important;box-shadow:0 12px 34px var(--shade);overflow:visible}
+body.app.app #nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0!important;line-height:0;padding:11px 0!important;border-radius:18px;background:none;color:var(--muted);border:0}
+body.app.app #nav button .ico{display:grid;place-items:center;width:auto}
+body.app.app #nav .ic{width:25px;height:25px}
+body.app.app #nav button.active,body.app.app #nav button:hover{background:none;color:var(--acc)}
+body.app.app #nav button.active .ic-fill{fill:currentColor}
+body.app.app #nav .plus{flex:0 0 62px;height:42px;padding:0!important;border-radius:21px!important;background:var(--acc)!important;color:#fff!important;margin:0 4px}
+body.app.app #nav .plus .ic{width:24px;height:24px;stroke-width:2.4}
+body.app.app #nav [data-page="Lab"],body.app.app #nav #moderatorNav{display:none!important}
+body.app.app .fab{bottom:calc(92px + env(safe-area-inset-bottom));right:max(16px,calc(50vw - 280px + 16px));width:52px;height:52px;font-size:22px}
+body.app.app .notice{background:var(--card2);color:var(--ink);border:1px solid var(--line);border-radius:16px;bottom:calc(92px + env(safe-area-inset-bottom))}
+
+/* --- paneles, modales, centro de control --- */
+body.app.app .drawerback{background:rgba(0,0,0,.55)}
+body.app.app .drawer{background:var(--card);color:var(--ink);border-radius:26px 26px 0 0}
+body.app.app .dhead{background:var(--card2);color:var(--ink);border-radius:26px 26px 0 0}
+body.app.app .dhead button{background:var(--line);color:var(--ink)}
+body.app.app .dsec h3{color:var(--muted)}
+body.app.app .switchrow{background:var(--card2)}
+body.app.app .modal,body.app.app .authcard,body.app.app .npanel{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:24px}
+body.app.app .npanel{box-shadow:0 20px 60px var(--shade)}
+body.app.app .modalback{background:rgba(0,0,0,.6)}
+body.app.app .close{background:var(--card2);color:var(--ink)}
+@media(min-width:700px){body.app.app .drawer{border-radius:26px 0 0 26px}body.app.app .dhead{border-radius:26px 0 0 0}}
+
+/* --- formularios --- */
+body.app.app input:not([type=checkbox]),body.app.app textarea,body.app.app select{background:var(--card2);color:var(--ink);border-color:var(--line)!important;border-radius:12px}
+body.app.app :focus-visible{outline:3px solid var(--acc)}
+
+/* --- acceso --- */
+body.app.app .authscreen{background:radial-gradient(circle at 50% -10%,rgba(78,165,230,.28),transparent 55%),var(--bg)}
+body.app.app .authbrand{color:var(--acc)}
+body.app.app .authbrand span{color:var(--muted)!important}
+body.app.app .authcard h1{color:var(--ink)!important}
+body.app.app .authcard span[style*="f4f1f3"]{background:var(--card2)!important;color:var(--muted)!important}
+body.app.app .googlebtn{background:var(--card2);color:var(--ink);border:1px solid var(--line)}
+body.app.app .authhint{background:var(--card2);color:var(--muted);border:0}
+
+@media(max-width:600px){body.app.app .shell{box-shadow:none}}
+
+/* ===== iPad / tablet / escritorio (≥768px): menú lateral + columnas. El móvil no cambia ===== */
+@media(min-width:768px){
+body.app.app .shell{grid-template-columns:84px minmax(0,1fr)!important;max-width:1280px;box-shadow:0 0 0 1px var(--line)}
+body.app.app .sidebar{position:sticky!important;top:0;height:100vh;align-self:start;border-right:1px solid var(--line);padding:16px 12px;overflow-y:auto}
+body.app.app .sidebar::before{content:"M+";display:block;text-align:center;font-weight:800;font-size:24px;letter-spacing:-.5px;color:var(--acc);padding:6px 0 18px}
+body.app.app #nav{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none;width:auto;flex-direction:column;align-items:stretch;gap:8px;padding:0!important;background:none!important;border:0!important;border-radius:0!important;box-shadow:none}
+body.app.app #nav button{flex:none;flex-direction:row;justify-content:center;padding:13px 0!important;border-radius:16px}
+body.app.app #nav button.active{background:var(--card2)}
+body.app.app #nav .plus{flex:none;width:auto;height:48px;margin:6px 0;border-radius:16px!important}
+body.app.app #nav [data-page="Lab"]{display:flex!important}
+body.app.app #nav #moderatorNav:not(.hidden){display:flex!important}
+body.app.app .topbar{justify-content:flex-end;padding:0 28px}
+body.app.app .topbar .brand{display:none}
+body.app.app .content{padding:8px 28px 48px}
+body.app.app .grid,body.app.app .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+body.app.app .fab{right:24px;bottom:24px}
+body.app.app .notice{bottom:28px}
+body.app.app #communityView{max-width:860px}
+body.app.app #viewPerfil,body.app.app #viewEventos,body.app.app #viewLab,body.app.app #moderatorView{max-width:880px}
+}
+@media(min-width:1024px){
+body.app.app .shell{grid-template-columns:240px minmax(0,1fr)!important}
+body.app.app .sidebar{padding:18px 14px}
+body.app.app .sidebar::before{content:"MOED+";text-align:left;font-size:28px;padding:6px 14px 20px}
+body.app.app #nav button{justify-content:flex-start;gap:14px;font-size:15px!important;font-weight:650;line-height:1.2;padding:12px 14px!important}
+body.app.app #nav .plus{justify-content:center}
+body.app.app #nav button .ico{font-size:20px!important}
+body.app.app #viewInicio{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);column-gap:20px;align-items:start}
+body.app.app #viewInicio>.greet,body.app.app #viewInicio>.stories,body.app.app #viewInicio>.grid{grid-column:1/-1}
+body.app.app #viewInicio>.sec,body.app.app #viewInicio>#inAvisos{grid-column:1}
+body.app.app #viewInicio>.grid2{grid-column:2;grid-row:3/span 2;grid-template-columns:1fr}
+body.app.app #viewInicio>.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(min-width:1280px){body.app.app .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+body.app.app .pfav{background-size:cover;background-position:center}
+
+/* ===== Toque moderno: cristal, transiciones y entradas suaves ===== */
+html{scroll-behavior:smooth}
+body.app.app *{-webkit-tap-highlight-color:transparent;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+body.app.app ::selection{background:color-mix(in srgb,var(--acc) 35%,transparent)}
+body.app.app h1,body.app.app h2,body.app.app h3{letter-spacing:-.02em}
+body.app.app .stat b,body.app.app .tile b{font-variant-numeric:tabular-nums}
+
+@keyframes moedIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes moedPop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes moedSheet{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+@keyframes moedSide{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:none}}
+body.app.app .content>section,body.app.app #grid{animation:moedIn .35s ease both}
+body.app.app .modal{animation:moedPop .26s cubic-bezier(.2,.8,.2,1)}
+body.app.app .npanel:not(.hidden){animation:moedPop .2s ease}
+body.app.app .drawer{animation:moedSheet .3s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:700px){body.app.app .drawer{animation-name:moedSide}}
+body.app.app .modalback,body.app.app .drawerback{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+/* cristal en cabecera y barra inferior */
+body.app.app .topbar{background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px)}
+@media(max-width:767px){body.app.app #nav{background:color-mix(in srgb,var(--card) 80%,transparent)!important;-webkit-backdrop-filter:saturate(1.5) blur(18px);backdrop-filter:saturate(1.5) blur(18px)}}
+
+/* tarjetas, botones e historias */
+body.app.app .community,body.app.app .post{border:1px solid var(--line);box-shadow:0 10px 28px -18px var(--shade)}
+body.app.app .primary{background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 65%,#fff))!important;box-shadow:0 8px 20px -10px var(--acc)}
+body.app.app .ring{border:2px solid transparent;background:linear-gradient(var(--card2),var(--card2)) padding-box,linear-gradient(135deg,var(--acc),#9bdcff) border-box}
+body.app.app .av{box-shadow:0 4px 12px -4px var(--shade)}
+body.app.app input:focus,body.app.app textarea:focus,body.app.app select:focus{outline:none;border-color:var(--acc)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 25%,transparent)}
+
+/* transiciones y pulsación */
+body.app.app .community,body.app.app .post,body.app.app .act,body.app.app .filter,body.app.app .join,body.app.app .tab,body.app.app .chip,body.app.app .primary,body.app.app .ab,body.app.app .topbar button,body.app.app #nav button{transition:transform .18s ease,background-color .2s,box-shadow .2s,color .2s,border-color .2s}
+body.app.app .primary:active,body.app.app .filter:active,body.app.app .join:active,body.app.app .tab:active,body.app.app .chip:active,body.app.app .act:active,body.app.app .ab:active,body.app.app .topbar button:active,body.app.app #nav button:active{transform:scale(.95)}
+@media(hover:hover){body.app.app .grid>.community:hover,body.app.app .evcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px var(--shade)}}
+@media(prefers-reduced-motion:reduce){body.app.app *{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ===== App instalada: respeta la barra de estado y los bordes del iPad ===== */
+body.app.app .topbar{padding-top:env(safe-area-inset-top);height:calc(60px + env(safe-area-inset-top))}
+body.app.app .shell{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+@media(min-width:768px){body.app.app .sidebar{padding-top:calc(16px + env(safe-area-inset-top))}}
+body.app.app .dcbox{margin-top:10px;padding:12px;border-radius:14px;background:var(--card2)}
+</style>
+</head>
+<body class="app">
+<section class="authscreen" id="authscreen" style="display:none">
+ <div class="authcard">
+  <div class="authbrand">MOED <span style="color:#29262b;font-size:13px;letter-spacing:0">HUB</span></div>
+  <div class="tiny" style="letter-spacing:2px;margin-top:2px">BY MOED</div><div style="margin-top:12px"><span style="display:inline-block;background:#f4f1f3;color:#6f6870;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:1px">BETA · VERSIÓN DE PRUEBA</span></div>
+  <h1 id="gateTitle">Entra en tu comunidad</h1>
+  <p id="gateDesc">Regístrate con un código de invitación para acceder a MOED Hub.</p>
+  <form id="gateForm">
+   <div id="gateNameWrap"><label for="gateName">Nombre de usuario</label><input id="gateName" minlength="2" placeholder="Cómo te verá la comunidad"></div>
+   <label for="gateEmail">Correo electrónico</label><input id="gateEmail" type="email" required placeholder="tu@email.com">
+   <div id="gateCodeWrap"><label for="gateCode">Código de invitación</label><input id="gateCode" placeholder="Código que te dio un moderador">
+    <div class="dcbox"><div style="font-weight:650">¿No tienes código?</div><div class="tiny" style="margin:2px 0 8px">Te lo enviamos por mensaje privado de Discord. Tienes que estar en nuestro servidor. <a id="discordJoin" class="hidden" target="_blank" rel="noopener" style="color:var(--acc)">Unirme al servidor</a></div><input id="discordUser" placeholder="Tu usuario de Discord" autocapitalize="none" autocomplete="off"><button class="filter" type="button" id="discordReq" style="margin-top:8px;width:100%">Enviarme un código por Discord</button></div></div>
+   <label for="gatePassword">Contraseña</label><input id="gatePassword" type="password" minlength="6" required placeholder="Mínimo 6 caracteres">
+   <button class="primary" type="submit" id="gateSubmit">Crear cuenta con código</button>
+  </form>
+  <button class="googlebtn" id="googleSign">G&nbsp; Continuar con Google</button>
+  <button class="authswitch" id="gateSwitch">Ya tengo cuenta · Iniciar sesión</button>
+  <p class="authhint">Necesitas un código de invitación para crear una cuenta. Las cuentas usan Firebase; algunas funciones de la beta aún están en desarrollo.</p>
+ </div>
+</section>
+<div class="shell" id="appShell" style="display:none">
+<aside class="sidebar">
+<div class="profile"><div class="avatar" id="avatar">M</div><strong id="profileName">¡Hola!</strong><br><small id="profileStatus">Tu espacio MOED</small></div>
+<nav class="nav" id="nav">
+<button class="active" data-page="Inicio"><span class="ico"><svg class="ic ic-fill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span> Inicio</button>
+<button data-page="Comunidades"><span class="ico"><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span> Comunidades</button>
+<button id="plusBtn" class="plus" type="button"><span class="ico"><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span> Crear</button>
+<button data-page="Eventos"><span class="ico"><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span> Eventos</button>
+<button data-page="Lab"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/></svg></span> Lab</button>
+<button data-page="Perfil"><span class="ico"><svg class="ic ic-fill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span> Perfil</button>
+<button id="moderatorNav" class="hidden" data-page="Moderación"><span class="ico"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span> Moderación</button>
+</nav>
+<nav class="nav bottom">
+<button id="accountButton"><span class="ico">⇥</span> Iniciar sesión</button>
+</nav>
+</aside>
+<main class="main">
+<header class="topbar">
+<div class="brand">MOED<sup>+</sup></div>
+<div class="topact"><button id="helpBtn" aria-label="Ayuda"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg></button><button id="bell" aria-label="Notificaciones"><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2 7.5 2 7.5H4S6 15 6 9z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="bn hidden" id="bellN">0</span></button><button id="themeBtn" aria-label="Cambiar entre modo claro y oscuro">🌙</button></div>
+</header>
+<section class="content">
+<div class="heading"><h1 id="pageTitle">Comunidades</h1><div class="controls"><input id="search" class="search" placeholder="Buscar comunidades…" aria-label="Buscar comunidades"><span style="color:#777">Ordenar por</span><select class="select" id="sort"><option value="default">Todas las comunidades</option><option value="name">Nombre A–Z</option><option value="members">Más miembros</option></select><button class="filter" id="clear" aria-label="Restablecer búsqueda y orden" title="Restablecer">↻</button></div></div>
+<div class="intro" id="introMain"><div><h2>Tu gente. Tus ideas.</h2><p>Descubre comunidades, comparte publicaciones y participa.</p></div></div>
+<div id="communityView" class="hidden">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><button class="filter" id="backToCommunities">← Comunidades</button><h2 id="communityTitle" style="margin:0"></h2><button class="join" id="joinInView" style="width:auto;padding:8px 14px;margin:0 0 0 auto">Unirme</button></div>
+  <div class="tabs"><button class="tab active" data-tab="chat">💬 Chat</button><button class="tab" data-tab="posts">📢 Avisos</button></div>
+  <div id="chatPane"><div class="chatbox" id="chatBox" aria-live="polite"></div><form class="chatform" id="chatForm"><input id="chatInput" maxlength="500" autocomplete="off" aria-label="Mensaje" placeholder="Escribe un mensaje"><button class="primary" id="chatSend" type="submit" aria-label="Enviar">➤</button></form></div>
+  <div id="postsPane" class="hidden">
+  <div class="intro hidden" id="postComposer" style="display:block"><h2>Publicar un aviso</h2><p style="margin-bottom:12px">Solo el moderador escribe avisos; toda la comunidad los verá aquí.</p><textarea id="postText" rows="3" maxlength="1000" aria-label="Escribe tu publicación" placeholder="¿Qué quieres avisar?" style="width:100%;border:1px solid #e4dce2;border-radius:11px;padding:12px;resize:vertical;margin-bottom:10px;font:inherit"></textarea><select id="postTag" class="select" aria-label="Etiqueta" style="margin-right:8px"><option value="">Sin etiqueta</option><option>Ideas</option><option>Ayuda</option><option>Novedades</option></select><button class="primary" id="publish">Publicar</button></div>
+  <div class="row" id="tagBar" style="margin-bottom:12px"></div><div id="posts"></div>
+  </div>
+</div>
+<section id="moderatorView" class="hidden">
+ <div class="intro" style="display:block">
+  <h2>Panel de moderación</h2>
+  <p>Aquí gestionas las comunidades y quién puede registrarse en MOED Hub.</p>
+ </div>
+ <div class="community card2" style="margin-bottom:18px"><h3>Resumen</h3><div class="tiles" id="mdStats" style="padding:0"></div></div>
+ <div class="community card2" style="margin-bottom:18px"><h3>Reportes de avisos</h3><div id="mdReports"></div></div>
+ <div class="community card2" style="margin-bottom:18px"><h3>Registro de acciones</h3><div id="mdLog"></div></div>
+ <div class="community" style="padding:20px;margin-bottom:18px;text-align:center"><h3 style="margin-top:0">🎁 Caja sorpresa del moderador</h3><p id="giftText" style="color:#8a8991;min-height:44px">Solo para ti. Ábrela cuando necesites un empujón.</p><button class="primary" id="giftBtn" type="button">Abrir caja</button></div>
+ <div class="community" style="padding:20px;margin-bottom:18px"><h3 style="margin-top:0">🎲 Sorpresa al azar</h3><p style="color:#8a8991">Elige una comunidad y deja que el azar publique un aviso: un miembro sorpresa, una pregunta o un reto. Solo tú puedes lanzarla.</p><select id="surpriseCommunity" class="select" style="width:100%;margin:8px 0 12px" aria-label="Comunidad para la sorpresa"></select><button class="primary" id="surpriseBtn" type="button">🎲 Lanzar sorpresa</button></div>
+ <div class="community" style="padding:20px;margin-bottom:18px"><h3 style="margin-top:0">Comunidades</h3><p style="color:#8a8991">Solo el moderador crea y borra comunidades. El resto de personas pueden unirse y publicar.</p><button class="primary" id="create" type="button">＋ Crear comunidad</button><div id="manageList" style="font-size:14px;margin-top:12px"></div></div>
+ <div class="community" style="padding:20px;margin-bottom:18px"><h3 style="margin-top:0">Código de registro general</h3><p style="color:#8a8991">Cualquiera con este código puede crear una cuenta. Cámbialo cuando quieras; las cuentas ya creadas no se ven afectadas.</p><label for="generalCode" style="font-size:13px;font-weight:650">Código</label><input id="generalCode" maxlength="30" autocomplete="off" style="width:100%;border:1px solid #d5e0ef;border-radius:10px;padding:12px;margin:5px 0 12px"><button class="primary" id="saveGeneralCode" type="button">Guardar código</button></div>
+ <div class="community" style="padding:20px;margin-bottom:18px">
+  <h3 style="margin-top:0">Crear código de invitación</h3>
+  <p style="color:#8a8991">Elige cuántas personas pueden registrarse con el código.</p>
+  <select id="codeUses" class="select" style="width:100%;margin:8px 0 12px" aria-label="Usos del código"><option value="1">1 uso</option><option value="10">10 usos</option><option value="50">50 usos</option><option value="100">100 usos</option><option value="0">Ilimitados</option></select>
+  <button class="primary" id="newCodeLogged" type="button">＋ Generar código</button>
+ </div>
+ <div class="community" style="padding:20px">
+  <h3 style="margin-top:0">Códigos disponibles</h3>
+  <div id="codeListLogged" style="font-size:14px;overflow-wrap:anywhere;margin:12px 0">Todavía no hay códigos.</div>
+ </div>
+</section>
+<section id="viewInicio" class="hidden">
+ <div class="greet"><h2 id="inHello">¡Hola!</h2><p>Aquí tienes lo más importante.</p></div>
+ <div class="stories" id="inComms"></div>
+ <h3 class="sec">Últimos avisos</h3><div id="inAvisos"></div>
+ <div class="grid2">
+  <div class="community card2"><h3>Actividad reciente</h3><div id="inAct"></div></div>
+  <div class="community card2"><h3>Tu actividad</h3><div class="tiles" id="inStats" style="padding:0"></div></div>
+  <div class="community card2"><h3>Accesos rápidos</h3><div class="acts"><button class="act" data-page="Comunidades">♧ Mis comunidades</button><button class="act" data-page="Eventos">📅 Eventos</button><button class="act" data-page="Lab">🧪 Proponer idea</button><button class="act" data-page="Perfil">⚙ Ajustes</button></div></div>
+ </div>
+ <div class="grid">
+  <button class="community act zone" data-page="Comunidades"><b>HUB</b><br><span class="tiny">Comunidades, publicaciones y conversaciones</span></button>
+  <button class="community act zone" data-page="Eventos"><b>LIVE</b><br><span class="tiny">Novedades y eventos en directo</span></button>
+  <button class="community act zone" data-page="Lab"><b>LAB</b><br><span class="tiny">Ideas, propuestas y funciones en desarrollo</span></button>
+ </div>
+</section>
+<section id="viewEventos" class="hidden">
+ <div class="row" style="margin-bottom:14px"><button class="primary hidden" id="evNew" type="button">＋ Crear evento</button></div>
+ <form id="evForm" class="community card2 fl hidden" style="margin-bottom:16px">
+  <label for="evTitle">Título</label><input id="evTitle" required maxlength="60">
+  <label for="evDate">Fecha y hora</label><input id="evDate" type="datetime-local" required>
+  <label for="evComm">Comunidad</label><input id="evComm" maxlength="40" placeholder="Por ejemplo: General">
+  <label for="evDesc">Descripción</label><textarea id="evDesc" rows="2" maxlength="200"></textarea>
+  <label for="evCap">Plazas (vacío = sin límite)</label><input id="evCap" type="number" min="1" max="1000">
+  <button class="primary" type="submit" style="margin-top:12px">Crear evento</button>
+ </form>
+ <div id="evList"></div>
+</section>
+<section id="viewLab" class="hidden">
+ <div class="row" style="margin-bottom:14px"><button class="primary" id="ideaNew" type="button">＋ Proponer idea</button></div>
+ <form id="ideaForm" class="community card2 fl hidden" style="margin-bottom:16px">
+  <label for="ideaTitle">Idea</label><input id="ideaTitle" required maxlength="60" placeholder="Qué función te gustaría ver">
+  <label for="ideaDesc">Detalles</label><textarea id="ideaDesc" rows="2" maxlength="200"></textarea>
+  <button class="primary" type="submit" style="margin-top:12px">Enviar idea</button>
+ </form>
+ <div class="tabs"><button class="tab active" data-lab="ideas">Ideas</button><button class="tab" data-lab="dev">En desarrollo</button><button class="tab" data-lab="done">Completado</button></div>
+ <div class="community card2" id="labList" style="margin-bottom:18px"></div>
+ <div class="community card2"><h3>Roadmap</h3>
+  <div class="rm"><i>✓</i><div><b>Fase 1 · Que todo funcione</b><div class="tiny">Registro, inicio de sesión con Google, persistencia de datos, invitaciones y permisos.</div></div></div>
+  <div class="rm"><i>2</i><div><b>Fase 2 · Nueva interfaz</b><div class="tiny">Inicio personalizado, navegación móvil, tarjetas, perfiles y notificaciones.</div></div></div>
+  <div class="rm"><i>3</i><div><b>Fase 3 · Funciones exclusivas</b><div class="tiny">MOED Lab, eventos, reacciones, insignias y nuevas herramientas.</div></div></div>
+ </div>
+</section>
+<section id="viewPerfil" class="hidden">
+ <div class="community card2" style="margin-bottom:14px">
+  <div class="pfhead"><div class="pfav" id="pfAv">M</div><div class="pfstats" id="pfStats"></div></div>
+  <div class="pfinfo"><strong id="pfUser"></strong><span id="pfCheck"></span><div class="tiny" id="pfRole"></div><div id="pfBioView"></div></div>
+ </div>
+ <div class="community card2 fl" style="margin-bottom:18px">
+  <h3>Editar perfil</h3>
+  <label>Avatar</label><div class="row avpick" id="pfAvPick"></div>
+  <div class="row" style="margin-top:8px"><button class="filter" id="pfPhotoBtn" type="button">📷 Subir foto de mi galería</button><button class="filter hidden" id="pfPhotoDel" type="button">Quitar foto</button><input id="pfPhotoFile" type="file" accept="image/*" class="hidden"></div>
+  <label for="pfName">Nombre de usuario</label><input id="pfName" maxlength="30">
+  <label for="pfBio">Biografía corta</label><textarea id="pfBio" rows="2" maxlength="120" placeholder="Cuéntale a la comunidad quién eres"></textarea>
+  <label for="pfPriv">Privacidad del perfil</label><select id="pfPriv"><option value="publica">Pública</option><option value="privada">Privada</option></select>
+  <button class="primary" id="pfSave" type="button" style="margin-top:12px">Guardar perfil</button>
+ </div>
+ <div class="grid2">
+  <div class="community card2"><h3>Mis comunidades</h3><div class="row" id="pfComms"></div></div>
+  <div class="community card2"><h3>Mis insignias</h3><div class="row" id="pfBadges"></div></div>
+  <div class="community card2"><h3>Guardados para después</h3><div id="pfSaved"></div></div>
+  <div class="community card2"><h3>Apariencia</h3><div class="row" id="pfAcc"></div><div class="row" style="margin-top:12px"><button class="filter" data-mode="dark">🌙 Modo oscuro</button><button class="filter" data-mode="light">☀️ Modo claro</button></div></div>
+ </div>
+ <div class="community card2" id="installCard" style="margin-bottom:14px"><h3>Instalar app</h3><p class="tiny" style="margin:0 0 10px">Ábrela a pantalla completa desde el icono, como una app.</p><button class="primary" id="installBtn" type="button">📲 Instalar MOED+</button></div>
+ <button class="filter logout" id="logoutBtn" type="button">Cerrar sesión</button>
+</section>
+<div class="grid" id="grid"></div>
+<p style="font-size:12px;color:#999;margin-top:24px;text-align:center">MOED Hub · By MOED · Beta</p>
+</section>
+</main>
+</div>
+<button class="fab hidden" id="fab" aria-label="Centro de control del moderador" title="Centro de control">⚡</button>
+<div class="drawerback hidden" id="drawerback"><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+<div class="dhead"><h2 id="drawerTitle">⚡ Centro de control</h2><button id="drawerClose" aria-label="Cerrar">✕</button></div>
+<div class="tiles"><div class="tile"><b id="stComm">0</b><span>Comunidades</span></div><div class="tile"><b id="stMem">0</b><span>Miembros en total</span></div><div class="tile"><b id="stCodes">0</b><span>Códigos libres</span></div><div class="tile"><b id="stTop" style="font-size:16px;margin-top:6px">—</b><span>Comunidad más grande</span></div><div class="tile"><b id="stRep">0</b><span>Reportes abiertos</span></div><div class="tile"><b id="stEv">0</b><span>Eventos próximos</span></div></div>
+<div class="dsec"><h3>Acciones rápidas</h3><div class="acts"><button class="act" id="qaCommunity">＋ Nueva comunidad</button><button class="act" id="qaCode">🎟 Código nuevo</button><button class="act" id="qaSurprise">🎲 Sorpresa al azar</button><button class="act" id="qaPanel">🛡 Abrir moderación</button></div></div>
+<div class="dsec"><h3>Registros</h3><div class="switchrow"><div><strong>Registros abiertos</strong><div class="tiny">Si los cierras, nadie nuevo puede crear cuenta.</div></div><button class="switch on" id="regSwitch" role="switch" aria-checked="true" aria-label="Registros abiertos"></button></div></div>
+<div class="dsec"><h3>Aviso a todas las comunidades</h3><textarea id="broadcastText" rows="3" maxlength="500" placeholder="Escribe un aviso para todas las comunidades"></textarea><button class="primary" id="broadcastBtn" type="button">📣 Enviar a todas</button></div>
+</aside></div>
+<div class="npanel hidden" id="npanel" role="dialog" aria-label="Notificaciones">
+ <div class="row" style="justify-content:space-between"><strong>Notificaciones</strong><button class="filter" id="nRead" type="button">Marcar leídas</button></div>
+ <div class="tabs" style="margin:10px 0 4px"><button class="tab active" data-nt="all">Todas</button><button class="tab" data-nt="unread">No leídas</button></div>
+ <div id="nList"></div>
+ <div class="tiny" style="margin-top:10px"><b>Silenciar comunidades</b></div><div id="nMute"></div>
+</div>
+<div class="drawerback hidden" id="quick"><aside class="drawer" role="dialog" aria-label="Crear"><div class="dhead"><h2>Crear</h2><button id="quickClose" aria-label="Cerrar">✕</button></div><div class="dsec" style="padding-top:16px"><div class="acts" id="quickActs"></div></div></aside></div>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+<div class="modalback" id="profBack"><div class="modal" role="dialog" aria-modal="true" aria-label="Perfil"><button class="close" id="profClose" aria-label="Cerrar">✕</button><div id="profBody"></div></div></div>
+<div class="modalback" id="modalback"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close" id="close" aria-label="Cerrar">✕</button><h2 id="modalTitle">Crear comunidad</h2><p>Ponle un nombre y una frase que explique de qué trata.</p><form id="communityForm"><label for="newName">Nombre</label><input id="newName" required minlength="3" maxlength="40" placeholder="Por ejemplo: Fotografía con móvil"><label for="newDesc">Descripción</label><textarea id="newDesc" rows="2" maxlength="120" placeholder="Una frase sobre la comunidad"></textarea><label for="newEmoji">Icono</label><select id="newEmoji"><option>✨</option><option>🎨</option><option>💡</option><option>🎮</option><option>📚</option><option>🎵</option><option>🌱</option><option>🛠️</option></select><button class="primary" type="submit" id="newSubmit">Crear comunidad</button></form></div></div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, setDoc, getDoc, updateDoc, deleteDoc, writeBatch, getDocs, onSnapshot, query, orderBy, limit, serverTimestamp, increment, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBurUENbTecBXPusL1M_wCWg-HGEBwMUe4",
+  authDomain: "moed-hub.firebaseapp.com",
+  projectId: "moed-hub",
+  storageBucket: "moed-hub.firebasestorage.app",
+  messagingSenderId: "288004919535",
+  appId: "1:288004919535:web:8efe8b52b4241229f5cb1a",
+  measurementId: "G-8B8Q90121T"
+};
+const $=id=>document.getElementById(id);
+const firebaseApp=initializeApp(firebaseConfig),auth=getAuth(firebaseApp),db=getFirestore(firebaseApp),googleProvider=new GoogleAuthProvider();
+const seed=[
+ {id:'creatividad',name:"Creatividad",members:0,emoji:"🎨",art:"c1",desc:"Ideas, proyectos y cosas hechas por ti."},
+ {id:'diseno-tecnologia',name:"Diseño & tecnología",members:0,emoji:"✏️",art:"c2",desc:"Diseño digital, interfaces y tecnología."},
+ {id:'zona-creativa',name:"Zona creativa",members:0,emoji:"🧩",art:"c3",desc:"Un espacio para imaginar y crear."},
+ {id:'historias-exito',name:"Historias de éxito",members:0,emoji:"🚀",art:"c4",desc:"Comparte logros y aprende en comunidad."},
+ {id:'radar',name:"Radar",members:0,emoji:"📰",art:"c5",desc:"Noticias, novedades e ideas compartidas por la comunidad."},
+ {id:'expertos-digitales',name:"Expertos digitales",members:0,emoji:"💻",art:"c6",desc:"Ayuda, programación y herramientas digitales."}
+];
+let currentUser=null,communities=[],joined=new Set(),posts=[],codes=[],activeCommunity=null,gateMode='register',busy=false,seeding=false;
+let regOpen=true,stopCommunities=null,stopPosts=null,stopCodes=null,stopChat=null,noticeTimer,messages=[],stickChat=true;
+// El moderador lo deciden las reglas de Firestore (firestore.rules): solo él puede leer config/registro.
+async function checkMod(){try{await getDoc(doc(db,'config','registro'));return true}catch(e){return false}}
+const fmt=ts=>ts&&ts.toDate?ts.toDate().toLocaleString('es-ES',{dateStyle:'short',timeStyle:'short'}):'';
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function notice(t){const n=$('notice');n.textContent=t;n.style.display='block';clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>n.style.display='none',3200)}
+function errMsg(e){
+ const m={'app/bad-code':'Código de invitación incorrecto o ya usado (o los registros están cerrados). Pide uno a un moderador.','auth/email-already-in-use':'Ese correo ya tiene una cuenta. Inicia sesión.','auth/invalid-email':'El correo electrónico no es válido.','auth/weak-password':'La contraseña debe tener al menos 6 caracteres.','auth/invalid-credential':'Correo o contraseña incorrectos.','auth/popup-closed-by-user':'Has cerrado la ventana de Google.','auth/unauthorized-domain':'Este dominio no está autorizado en Firebase Authentication. Añádelo en Configuración → Dominios autorizados.','auth/operation-not-allowed':'Activa el proveedor Google en Firebase → Authentication → Método de acceso.','permission-denied':'Firestore ha rechazado la operación. Comprueba que has publicado las reglas de firestore.rules.'};
+ return m[e.code]||('Error: '+(e.message||e.code))
+}
+function stopPostsListener(){if(stopPosts){stopPosts();stopPosts=null}if(stopChat){stopChat();stopChat=null}}
+function stopAll(){stopPostsListener();if(stopCommunities){stopCommunities();stopCommunities=null}if(stopCodes){stopCodes();stopCodes=null}}
+
+/* ---------- Cuentas ---------- */
+async function register(user,name,code){
+ const uref=doc(db,'users',user.uid),base={name,email:user.email,role:'miembro',joined:[],createdAt:serverTimestamp()};
+ if(await checkMod()){await setDoc(uref,{...base,role:'moderador'});return}
+ if(!code)throw {code:'app/bad-code'};
+ try{await setDoc(uref,{...base,code});return}catch(e){if(e.code!=='permission-denied')throw e}
+ const b=writeBatch(db);
+ b.update(doc(db,'inviteCodes',code),{uses:increment(1),lastUsedBy:user.uid,usedAt:serverTimestamp()});
+ b.set(uref,{...base,code});
+ try{await b.commit()}catch(e){throw e.code==='permission-denied'?{code:'app/bad-code'}:e}
+}
+async function enter(user){
+ const ref=doc(db,'users',user.uid);let snap=await getDoc(ref);const mod=await checkMod();
+ if(!snap.exists()){
+  if(!mod){await signOut(auth);notice('Esta cuenta aún no está registrada. Pulsa "Registrarme" y usa un código de invitación.');return}
+  await register(user,user.displayName||user.email.split('@')[0],'');snap=await getDoc(ref)
+ }
+ const d=snap.data(),role=mod?'moderador':'miembro';
+ if(d.role!==role)await updateDoc(ref,{role});
+ currentUser={uid:user.uid,name:d.name,email:user.email,role};joined=new Set(d.joined||[]);
+ $('authscreen').style.display='none';$('appShell').style.display='grid';
+ startSync();render();
+ if(role==='moderador'){let first=true;try{first=!sessionStorage.getItem('modWelcome');sessionStorage.setItem('modWelcome','1')}catch(_){}if(first){confetti();notice('¡Bienvenido, moderador! 🎉')}}
+}
+function gateRefresh(){
+ $('fab').classList.add('hidden');$('drawerback').classList.add('hidden');
+ $('authscreen').style.display='grid';$('appShell').style.display='none';
+ const r=gateMode==='register';
+ $('gateTitle').textContent=r?'Entra en tu comunidad':'Bienvenido de nuevo';
+ $('gateDesc').textContent=r?'Crea tu cuenta con un código de invitación de un moderador.':'Inicia sesión con tu cuenta de MOED Hub.';
+ $('gateNameWrap').style.display=r?'block':'none';$('gateCodeWrap').style.display=r?'block':'none';
+ $('gateName').required=r;$('gateCode').required=r;
+ $('gateSubmit').textContent=r?'Crear cuenta con código':'Iniciar sesión';
+ $('gateSwitch').textContent=r?'Ya tengo cuenta · Iniciar sesión':'No tengo cuenta · Registrarme';
+}
+$('gateSwitch').onclick=()=>{gateMode=gateMode==='register'?'login':'register';gateRefresh()};
+$('gateForm').onsubmit=async e=>{
+ e.preventDefault();$('gateSubmit').disabled=true;busy=true;
+ const email=$('gateEmail').value.trim().toLowerCase(),password=$('gatePassword').value;let created=null;
+ try{
+  if(gateMode==='register'){
+   const cred=await createUserWithEmailAndPassword(auth,email,password);created=cred.user;
+   const name=$('gateName').value.trim();await updateProfile(cred.user,{displayName:name});
+   await register(cred.user,name,$('gateCode').value.trim().toUpperCase());created=null;
+  }else await signInWithEmailAndPassword(auth,email,password);
+  await enter(auth.currentUser);
+ }catch(error){if(created){try{await deleteUser(created)}catch(_){}}notice(errMsg(error))}
+ finally{busy=false;$('gateSubmit').disabled=false}
+};
+$('googleSign').onclick=async()=>{
+ busy=true;
+ try{
+  const code=$('gateCode').value.trim().toUpperCase();
+  const user=(await signInWithPopup(auth,googleProvider)).user;
+  if(!(await getDoc(doc(db,'users',user.uid))).exists()){
+   if(!(await checkMod())&&!code){await signOut(auth);notice('Esta cuenta aún no está registrada. Pulsa "Registrarme" y escribe tu código de invitación.');return}
+   try{await register(user,user.displayName||user.email.split('@')[0],code)}catch(err){await signOut(auth);throw err}
+  }
+  await enter(user);
+ }catch(error){notice(errMsg(error))}finally{busy=false}
+};
+onAuthStateChanged(auth,user=>{
+ if(busy)return;
+ if(user)enter(user).catch(e=>notice('No se pudo cargar tu cuenta: '+errMsg(e)));
+ else{stopAll();currentUser=null;gateRefresh()}
+});
+$('accountButton').onclick=async()=>{stopAll();try{await signOut(auth)}catch(e){notice(errMsg(e))}};
+
+/* ---------- Datos en Firestore ---------- */
+async function seedCommunities(){
+ const cref=doc(db,'config','registro');
+ try{
+  const s=await getDoc(cref);if(s.exists()&&s.data().seeded)return;
+  const b=writeBatch(db);
+  seed.forEach(c=>{const {id,...rest}=c;b.set(doc(db,'communities',id),{...rest,ownerId:currentUser.uid,createdAt:serverTimestamp()})});
+  b.set(cref,{seeded:true},{merge:true});await b.commit();
+ }catch(e){notice('No se pudieron crear las comunidades de ejemplo: '+errMsg(e))}
+}
+function startSync(){
+ stopAll();
+ stopCommunities=onSnapshot(query(collection(db,'communities'),orderBy('createdAt','asc')),s=>{
+  communities=s.docs.map(d=>({id:d.id,...d.data()}));
+  if(!communities.length&&currentUser.role==='moderador'&&!seeding){seeding=true;seedCommunities()}
+  render();
+ },e=>notice('Comunidades: '+errMsg(e)));
+ if(currentUser.role==='moderador'){
+  const cref=doc(db,'config','registro');
+  getDoc(cref).then(s=>{if(!s.exists())return setDoc(cref,{code:'RADAR-2026',updatedAt:serverTimestamp()},{merge:true})}).catch(e=>notice('Código general: '+errMsg(e)));
+  const u1=onSnapshot(query(collection(db,'inviteCodes'),orderBy('createdAt','desc')),s=>{codes=s.docs.map(d=>({id:d.id,...d.data()}));renderCodes();liveDrawer()},e=>notice('Códigos: '+errMsg(e)));
+  const u2=onSnapshot(cref,s=>{if(s.exists()){$('generalCode').value=s.data().code||'';regOpen=s.data().abiertos!==false;updateReg()}},()=>{});
+  stopCodes=()=>{u1();u2()};
+ }
+}
+async function toggleJoin(id){
+ const joining=!joined.has(id),b=writeBatch(db),mref=doc(db,'communities',id,'members',currentUser.uid);
+ if(joining)b.set(mref,{uid:currentUser.uid,name:currentUser.name,joinedAt:serverTimestamp()});else b.delete(mref);
+ b.update(doc(db,'communities',id),{members:increment(joining?1:-1)});
+ b.update(doc(db,'users',currentUser.uid),{joined:joining?arrayUnion(id):arrayRemove(id)});
+ try{await b.commit();joining?joined.add(id):joined.delete(id);notice(joining?'¡Te has unido a la comunidad!':'Has salido de la comunidad.');render()}
+ catch(e){notice('No se pudo actualizar la membresía: '+errMsg(e))}
+}
+function render(){
+ if(!currentUser)return;
+ const q=$('search').value.toLowerCase().trim();let list=communities.filter(c=>((c.name||'')+' '+(c.desc||'')).toLowerCase().includes(q));
+ if($('sort').value==='name')list.sort((a,b)=>a.name.localeCompare(b.name));if($('sort').value==='members')list.sort((a,b)=>(b.members||0)-(a.members||0));
+ $('grid').innerHTML=list.length?list.map(c=>{const j=joined.has(c.id),id=esc(c.id);return `<article class="community"><div class="art ${esc(c.art||'c1')}"><span>${esc(c.emoji||'✨')}</span></div><div class="cardbody"><h3>${esc(c.name)}</h3><p style="margin:0 0 6px;color:#6f6870;font-size:13px">${esc(c.desc||'')}</p><div class="meta">${Math.max(0,c.members||0)} miembros</div><button class="join ${j?'joined':''}" data-join="${id}">${j?'✓ Unido':'Unirme a la comunidad'}</button><button class="join" style="margin-top:8px" data-open="${id}">Abrir comunidad →</button><div class="joined-label">Ya formas parte de esta comunidad</div></div></article>`}).join(''):'<div class="empty">'+(communities.length?'No hay comunidades que coincidan con tu búsqueda.':'Todavía no hay comunidades. Crea la primera con el botón de arriba.')+'</div>';
+ document.querySelectorAll('[data-join]').forEach(b=>b.onclick=()=>toggleJoin(b.dataset.join));
+ document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openCommunity(b.dataset.open));
+ $('moderatorNav').classList.toggle('hidden',currentUser.role!=='moderador');
+ $('profileName').textContent='¡Hola, '+currentUser.name+'!';$('profileStatus').textContent=(currentUser.role==='moderador'?'Moderador · ':'')+currentUser.email;$('avatar').textContent=currentUser.name.charAt(0).toUpperCase();
+ $('accountButton').innerHTML='<span class="ico">⇥</span> Cerrar sesión';
+ renderManage();updateJoinBtn();
+ $('fab').classList.toggle('hidden',currentUser.role!=='moderador');liveDrawer();
+}
+function openCommunity(id){
+ const c=communities.find(x=>x.id===id);if(!c)return;activeCommunity=id;posts=[];
+ $('grid').classList.add('hidden');$('communityView').classList.remove('hidden');$('pageTitle').textContent=c.name;$('communityTitle').textContent=(c.emoji||'')+' '+c.name;renderPosts();
+ stopPostsListener();
+ stopPosts=onSnapshot(query(collection(db,'communities',id,'posts'),orderBy('createdAt','asc')),s=>{posts=s.docs.map(d=>({id:d.id,...d.data()}));renderPosts()},e=>notice('Publicaciones: '+errMsg(e)));
+messages=[];stickChat=true;renderChat();
+ stopChat=onSnapshot(query(collection(db,'communities',id,'messages'),orderBy('createdAt','desc'),limit(100)),s=>{messages=s.docs.map(d=>({id:d.id,...d.data({serverTimestamps:'estimate'})})).reverse();renderChat()},e=>notice('Chat: '+errMsg(e)));
+ $('introMain').classList.add('hidden');setTab('chat');updateJoinBtn();
+}
+function renderPosts(){
+ const sp=posts.filter(p=>p.kind==='sorpresa').pop();
+ if(sp&&currentUser&&currentUser.role!=='moderador'){try{const k='sorpresa_'+sp.id;if(!localStorage.getItem(k)){localStorage.setItem(k,'1');confetti();notice('🎁 ¡Hay una sorpresa en los avisos!')}}catch(_){}}
+ $('posts').innerHTML=posts.length?posts.slice().reverse().map(p=>{const own=currentUser&&(p.authorId===currentUser.uid||currentUser.role==='moderador');return `<article class="post${p.kind==='sorpresa'?' surprise':''}"><div class="posthead"><strong style="color:#4d4850">${esc(p.author)}</strong><span>${esc(fmt(p.createdAt))}${own?` <button class="filter" style="padding:2px 8px;margin-left:8px" data-del="${esc(p.id)}" aria-label="Borrar publicación">Borrar</button>`:''}</span></div><p>${esc(p.text)}</p></article>`}).join(''):'<div class="empty" style="background:white;border-radius:12px">Todavía no hay avisos.</div>';
+ document.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{try{await deleteDoc(doc(db,'communities',activeCommunity,'posts',b.dataset.del));notice('Publicación borrada.')}catch(e){notice('No se pudo borrar: '+errMsg(e))}});
+}
+$('publish').onclick=async()=>{
+ if(!currentUser||currentUser.role!=='moderador'){notice('Solo el moderador puede publicar avisos.');return}
+ const text=$('postText').value.trim();if(!text){notice('Escribe algo antes de publicar.');return}
+ $('publish').disabled=true;
+ try{await addDoc(collection(db,'communities',activeCommunity,'posts'),{author:currentUser.name,authorId:currentUser.uid,text,createdAt:serverTimestamp()});$('postText').value='';notice('¡Aviso publicado!')}
+ catch(e){notice('No se pudo publicar: '+errMsg(e))}finally{$('publish').disabled=false}
+};
+$('communityForm').onsubmit=async e=>{
+ e.preventDefault();if(!currentUser||currentUser.role!=='moderador'){notice('Solo el moderador puede crear comunidades.');return}const btn=$('newSubmit');btn.disabled=true;
+ try{
+  const ref=doc(collection(db,'communities')),b=writeBatch(db);
+  b.set(ref,{name:$('newName').value.trim(),desc:$('newDesc').value.trim()||'Una nueva comunidad de MOED.',members:1,emoji:$('newEmoji').value,art:['c1','c2','c3','c4','c5','c6'][communities.length%6],ownerId:currentUser.uid,createdAt:serverTimestamp()});
+  b.set(doc(db,'communities',ref.id,'members',currentUser.uid),{uid:currentUser.uid,name:currentUser.name,joinedAt:serverTimestamp()});
+  b.update(doc(db,'users',currentUser.uid),{joined:arrayUnion(ref.id)});
+  await b.commit();joined.add(ref.id);$('communityForm').reset();$('modalback').style.display='none';notice('Comunidad creada.');render();
+ }catch(error){notice('No se pudo crear la comunidad: '+errMsg(error))}finally{btn.disabled=false}
+};
+$('create').onclick=()=>{$('modalback').style.display='grid';$('newName').focus()};
+
+/* ---------- Chat ---------- */
+function setTab(tab){
+ document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+ $('chatPane').classList.toggle('hidden',tab!=='chat');$('postsPane').classList.toggle('hidden',tab!=='posts');
+ if(tab==='chat'){const bx=$('chatBox');bx.scrollTop=bx.scrollHeight}
+}
+function updateJoinBtn(){
+ const b=$('joinInView');if(!b||!activeCommunity)return;
+ const j=joined.has(activeCommunity);
+ $('postComposer').classList.toggle('hidden',!currentUser||currentUser.role!=='moderador');
+ b.textContent=j?'✓ Unido':'Unirme';b.classList.toggle('joined',j);
+ $('chatInput').disabled=!j;$('chatSend').disabled=!j;$('chatInput').placeholder=j?'Escribe un mensaje':'Únete a la comunidad para escribir';
+}
+function renderChat(){
+ const box=$('chatBox');if(!box)return;
+ const near=box.scrollHeight-box.scrollTop-box.clientHeight<80;let last='';
+ box.innerHTML=messages.length?messages.map(m=>{
+  const d=m.createdAt&&m.createdAt.toDate?m.createdAt.toDate():null;
+  const day=d?d.toLocaleDateString('es-ES',{day:'numeric',month:'long'}):'';
+  const sep=day&&day!==last?`<div class="day">${esc(day)}</div>`:'';if(day)last=day;
+  const me=currentUser&&m.authorId===currentUser.uid,canDel=currentUser&&(me||currentUser.role==='moderador');
+  const time=d?d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}):'';
+  return sep+`<div class="msg${me?' me':''}">${me?'':`<b data-prof="${esc(m.authorId||'')}" style="cursor:pointer">${esc(m.author)}</b>`}${esc(m.text)}<small>${esc(time)}${canDel?`<button class="msgdel" data-delmsg="${esc(m.id)}" aria-label="Borrar mensaje">✕</button>`:''}</small></div>`}).join(''):'<div class="empty">Aún no hay mensajes. ¡Escribe el primero!</div>';
+ box.querySelectorAll('[data-delmsg]').forEach(b=>b.onclick=async()=>{try{await deleteDoc(doc(db,'communities',activeCommunity,'messages',b.dataset.delmsg))}catch(e){notice('No se pudo borrar: '+errMsg(e))}});
+ if(stickChat||near)box.scrollTop=box.scrollHeight;
+ if(messages.length)stickChat=false;
+}
+$('chatForm').onsubmit=async e=>{
+ e.preventDefault();const text=$('chatInput').value.trim();
+ if(!text||!activeCommunity||!joined.has(activeCommunity))return;
+ $('chatInput').value='';stickChat=true;
+ try{await addDoc(collection(db,'communities',activeCommunity,'messages'),{author:currentUser.name,authorId:currentUser.uid,text,createdAt:serverTimestamp()})}
+ catch(err){$('chatInput').value=text;notice('No se pudo enviar: '+errMsg(err))}
+};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+$('joinInView').onclick=()=>{if(activeCommunity)toggleJoin(activeCommunity)};
+
+/* ---------- Moderación ---------- */
+function renderManage(){
+ const box=$('manageList');if(!box||!currentUser||currentUser.role!=='moderador')return;
+ box.innerHTML=communities.length?communities.map(c=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee"><span style="font-size:20px">${esc(c.emoji||'✨')}</span><div style="flex:1;min-width:0"><strong>${esc(c.name)}</strong><div class="tiny">${Math.max(0,c.members||0)} miembros</div></div><button class="filter" data-delcom="${esc(c.id)}">Borrar</button></div>`).join(''):'Todavía no hay comunidades.';
+ box.querySelectorAll('[data-delcom]').forEach(b=>b.onclick=()=>deleteCommunity(b.dataset.delcom));
+ const sel=$('surpriseCommunity');
+ if(sel){const cur=sel.value;sel.innerHTML='<option value="">Elige una comunidad…</option>'+communities.map(c=>`<option value="${esc(c.id)}">${esc(c.emoji||'')} ${esc(c.name)}</option>`).join('');sel.value=cur}
+}
+async function deleteCommunity(id){
+ const c=communities.find(x=>x.id===id);
+ if(!c||!confirm('¿Borrar la comunidad "'+c.name+'" con todas sus publicaciones? No se puede deshacer.'))return;
+ try{
+  const refs=[];
+  for(const sub of ['posts','members','messages'])(await getDocs(collection(db,'communities',id,sub))).forEach(d=>refs.push(d.ref));
+  for(let i=0;i<refs.length;i+=400){const b=writeBatch(db);refs.slice(i,i+400).forEach(r=>b.delete(r));await b.commit()}
+  await deleteDoc(doc(db,'communities',id));notice('Comunidad borrada.');
+ }catch(e){notice('No se pudo borrar: '+errMsg(e))}
+}
+const codeOpen=c=>!c.used&&((c.maxUses??1)===0||(c.uses||0)<(c.maxUses??1));
+function renderCodes(){
+ $('codeListLogged').innerHTML=codes.length?codes.map(c=>{const mx=c.maxUses??1,op=codeOpen(c);return `<div style="padding:10px 0;border-bottom:1px solid #eee"><strong>${esc(c.id)}</strong> <span class="tiny">· ${c.used&&c.uses==null?'usado':(c.uses||0)+'/'+(mx===0?'∞':mx)+' usos'+(op?'':' · agotado')}</span>${op?` <button class="filter" data-copycode="${esc(c.id)}" style="float:right;padding:5px 9px">Copiar</button>`:''}</div>`}).join(''):'Todavía no hay códigos. Genera uno nuevo.';
+ document.querySelectorAll('[data-copycode]').forEach(b=>b.onclick=()=>{const v=b.dataset.copycode;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(v).then(()=>notice('Código copiado.')).catch(()=>notice('Código: '+v));else notice('Código: '+v)});
+}
+$('newCodeLogged').onclick=async()=>{
+ const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',code='MOED-'+Array.from(crypto.getRandomValues(new Uint8Array(6)),n=>A[n%32]).join('');
+ try{await setDoc(doc(db,'inviteCodes',code),{used:false,maxUses:+$('codeUses').value,uses:0,createdBy:currentUser.uid,createdAt:serverTimestamp()});notice('Código generado: '+code)}
+ catch(e){notice('No se pudo crear el código: '+errMsg(e))}
+};
+
+$('saveGeneralCode').onclick=async()=>{
+ const v=$('generalCode').value.trim().toUpperCase();
+ if(v.length<4){notice('El código debe tener al menos 4 caracteres.');return}
+ try{await setDoc(doc(db,'config','registro'),{code:v,updatedAt:serverTimestamp()},{merge:true});notice('Código de registro actualizado.')}
+ catch(e){notice('No se pudo guardar: '+errMsg(e))}
+};
+
+/* ---------- Sorpresa al azar (solo moderador) ---------- */
+const questions=['¿Qué es lo último que aprendiste y te gustaría compartir?','Si pudieras añadir una cosa a esta comunidad, ¿cuál sería?','¿Qué proyecto tienes entre manos ahora mismo?','¿Qué herramienta no puede faltar en tu día a día?','¿Cuál fue tu mejor idea esta semana?','¿Qué te gustaría que se hablara más por aquí?'];
+const challenges=['Preséntate en el chat en una sola frase.','Comparte una foto, enlace o idea que te haya inspirado hoy.','Responde a dos mensajes del chat con algo amable.','Cuéntanos algo que hayas terminado esta semana, por pequeño que sea.','Invita a alguien que creas que encajaría aquí.'];
+async function launchSurprise(){
+ if(!currentUser||currentUser.role!=='moderador')return;
+ const id=$('surpriseCommunity').value,c=communities.find(x=>x.id===id);
+ if(!c){notice('Primero elige una comunidad.');return}
+ const btn=$('surpriseBtn');btn.disabled=true;
+ try{
+  let kind=['miembro','pregunta','reto'][Math.random()*3|0],text='';
+  if(kind==='miembro'){
+   const names=[];(await getDocs(collection(db,'communities',id,'members'))).forEach(d=>{const n=d.data().name;if(n)names.push(n)});
+   if(names.length)text='🎉 Miembro sorpresa del día: '+names[Math.random()*names.length|0]+'. ¡Felicidades! Salúdale en el chat.';else kind='pregunta';
+  }
+  if(!text&&kind==='pregunta')text='❓ Pregunta sorpresa: '+questions[Math.random()*questions.length|0];
+  if(!text)text='🎯 Reto sorpresa: '+challenges[Math.random()*challenges.length|0];
+  await addDoc(collection(db,'communities',id,'posts'),{author:currentUser.name,authorId:currentUser.uid,text,kind:'sorpresa',createdAt:serverTimestamp()});
+  confetti();notice('Sorpresa publicada en '+c.name+'.');
+ }catch(e){notice('No se pudo lanzar: '+errMsg(e))}finally{btn.disabled=false}
+}
+$('surpriseBtn').onclick=launchSurprise;
+
+/* ---------- Centro de control (solo moderador) ---------- */
+function updateReg(){const s=$('regSwitch');s.classList.toggle('on',regOpen);s.setAttribute('aria-checked',String(regOpen))}
+function refreshDrawer(){
+ $('stComm').textContent=communities.length;
+ $('stMem').textContent=communities.reduce((n,c)=>n+Math.max(0,c.members||0),0);
+ $('stCodes').textContent=codes.filter(c=>!c.used).length;
+ const top=communities.slice().sort((a,b)=>(b.members||0)-(a.members||0))[0];
+ $('stTop').textContent=top?((top.emoji||'')+' '+top.name):'—';
+ updateReg();
+}
+function liveDrawer(){if(!$('drawerback').classList.contains('hidden'))refreshDrawer()}
+function closeDrawer(){$('drawerback').classList.add('hidden')}
+$('fab').onclick=()=>{if(!currentUser||currentUser.role!=='moderador')return;refreshDrawer();$('drawerback').classList.remove('hidden')};
+$('drawerClose').onclick=closeDrawer;
+$('drawerback').onclick=e=>{if(e.target===$('drawerback'))closeDrawer()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+$('qaCommunity').onclick=()=>{closeDrawer();$('modalback').style.display='grid';$('newName').focus()};
+$('qaCode').onclick=()=>$('newCodeLogged').click();
+$('qaSurprise').onclick=()=>{if(!communities.length){notice('Aún no hay comunidades.');return}$('surpriseCommunity').value=communities[Math.random()*communities.length|0].id;launchSurprise()};
+$('qaPanel').onclick=()=>{closeDrawer();document.querySelector('[data-page="Moderación"]').click()};
+$('regSwitch').onclick=async()=>{
+ const next=!regOpen;
+ try{await setDoc(doc(db,'config','registro'),{abiertos:next,updatedAt:serverTimestamp()},{merge:true});notice(next?'Registros abiertos.':'Registros cerrados.')}
+ catch(e){notice('No se pudo cambiar: '+errMsg(e))}
+};
+$('broadcastBtn').onclick=async()=>{
+ const text=$('broadcastText').value.trim();
+ if(!text){notice('Escribe el aviso primero.');return}
+ if(!communities.length){notice('Aún no hay comunidades.');return}
+ if(!confirm('¿Enviar este aviso a '+communities.length+' comunidades?'))return;
+ const btn=$('broadcastBtn');btn.disabled=true;
+ try{
+  const b=writeBatch(db);
+  communities.forEach(c=>b.set(doc(collection(db,'communities',c.id,'posts')),{author:currentUser.name,authorId:currentUser.uid,text:'📣 '+text,kind:'general',createdAt:serverTimestamp()}));
+  await b.commit();$('broadcastText').value='';confetti();notice('Aviso enviado a todas las comunidades.');
+ }catch(e){notice('No se pudo enviar: '+errMsg(e))}finally{btn.disabled=false}
+};
+
+/* ---------- Sorpresas del moderador ---------- */
+function confetti(){
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40';
+ c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d');
+ const cols=['#3478f6','#ff5a8a','#ffc83d','#2ecc71','#a66cff'];
+ const ps=Array.from({length:140},()=>({x:c.width/2,y:c.height*.35,vx:(Math.random()-.5)*14,vy:-2-Math.random()*12,s:5+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[Math.random()*5|0]}));
+ let f=0;(function tick(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore()});if(++f<130)requestAnimationFrame(tick);else c.remove()})();
+}
+const gifts=[
+ 'Reto del día: escribe un aviso de bienvenida en la comunidad que menos se mueve.',
+ 'Truco: un aviso corto que termina con una pregunta recibe más respuestas en el chat.',
+ 'Las comunidades pequeñas y activas funcionan mejor que las enormes y mudas.',
+ 'Hoy toca: revisa los códigos de invitación sin usar y quita los que ya no necesites.',
+ 'Reto: invita a una sola persona y dale la bienvenida por el chat.',
+ 'Gracias por cuidar este espacio. Una comunidad sana empieza con alguien como tú. 💙',
+ 'Idea: abre una comunidad nueva para un tema del que ya se hable en el chat.',
+ 'Secreto: pulsa 5 veces seguidas el logo MOED y verás otra lluvia de confeti.',
+ 'Reto: publica un aviso con las normas de la comunidad: respeto, claridad y buen humor.',
+ 'Hoy no hay nada urgente. Tómate un minuto de descanso. ☕'
+];
+let lastGift=-1,logoClicks=0,logoTimer;
+$('giftBtn').onclick=()=>{let i;do{i=Math.random()*gifts.length|0}while(i===lastGift);lastGift=i;$('giftText').textContent=gifts[i];$('giftBtn').textContent='Abrir otra';confetti()};
+document.querySelector('.brand').onclick=()=>{
+ if(!currentUser||currentUser.role!=='moderador')return;
+ clearTimeout(logoTimer);logoTimer=setTimeout(()=>logoClicks=0,1500);
+ if(++logoClicks>=5){logoClicks=0;confetti();notice('🎉 Encontraste el secreto del logo.')}
+};
+
+/* ---------- Interfaz ---------- */
+$('backToCommunities').onclick=()=>{$('communityView').classList.add('hidden');$('grid').classList.remove('hidden');$('introMain').classList.remove('hidden');$('pageTitle').textContent='Comunidades';activeCommunity=null;stopPostsListener()};
+$('search').addEventListener('input',render);$('sort').addEventListener('change',render);$('clear').onclick=()=>{$('search').value='';$('sort').value='default';render()};
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{
+ const p=b.dataset.page;
+ if(p!=='Comunidades'&&p!=='Moderación'){notice(p+': esta sección llegará en la siguiente fase.');return}
+ if(p==='Moderación'&&(!currentUser||currentUser.role!=='moderador')){notice('Solo el moderador puede abrir este apartado.');return}
+ document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x===b));
+ const mod=p==='Moderación';
+ $('communityView').classList.add('hidden');$('introMain').classList.toggle('hidden',mod);$('moderatorView').classList.toggle('hidden',!mod);$('grid').classList.toggle('hidden',mod);
+ $('pageTitle').textContent=p;activeCommunity=null;stopPostsListener();
+});
+$('close').onclick=()=>$('modalback').style.display='none';
+$('modalback').onclick=e=>{if(e.target===$('modalback'))$('modalback').style.display='none'};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('modalback').style.display='none'});
+
+/* ================= MOED Hub 2.0 ================= */
+import { deleteField } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(_){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
+let profile={},events=[],ideas=[],feed=[],reports=[],mlog=[],tagFilter='',labTab='ideas',nTab='all',page='Inicio',started=false,feedTimer=null;
+let stopEv=null,stopId=null,stopRep=null,stopLog=null;const openCmt=new Set();
+const AV=['🙂','😎','🤖','🦊','🐼','🚀','🎨','🎮','📚','🌱'],ACC=[['#4ea5e6','Azul cielo'],['#3478f6','Azul intenso'],['#5cc0ff','Azul claro'],['#4b5563','Gris oscuro'],['#9ca3af','Gris claro']];
+const ST={ideas:'Ideas',dev:'En desarrollo',done:'Completado'};
+const IC=p=>`<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const I={heart:IC('<path d="M12 20.3C5.6 16 3 12.6 3 9.2 3 6.7 4.9 5 7.1 5c1.9 0 3.5 1 4.9 2.9C13.4 6 15 5 16.9 5 19.1 5 21 6.7 21 9.2c0 3.4-2.6 6.8-9 11.1z"/>'),comment:IC('<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12z"/>'),save:IC('<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/>'),flag:IC('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>')};
+const THEME=Object.assign({mode:'dark',acc:'#4ea5e6'},LS.get('moedTheme2',{}));
+function applyTheme(){document.body.classList.toggle('dark',THEME.mode==='dark');document.documentElement.style.setProperty('--acc',THEME.acc);$('themeBtn').textContent=THEME.mode==='dark'?'☀️':'🌙';LS.set('moedTheme2',THEME);if(page==='Perfil'&&currentUser)drawPerfil()}
+const fmtD=iso=>{const d=new Date(iso);return isNaN(d)?'':d.toLocaleString('es-ES',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
+const ago=t=>{const m=Math.max(0,(Date.now()-t)/6e4|0);return m<1?'ahora':m<60?'hace '+m+' min':m<1440?'hace '+(m/60|0)+' h':'hace '+(m/1440|0)+' d'};
+const isMod=()=>currentUser&&currentUser.role==='moderador';
+function logAct(text){if(isMod())addDoc(collection(db,'modLog'),{text,by:currentUser.name,createdAt:serverTimestamp()}).catch(()=>{})}
+const ms=t=>(t&&t.toMillis?t.toMillis():0);
+
+/* ---------- Páginas ---------- */
+function showPage(p){
+ page=p;document.body.dataset.page=p;const com=p==='Comunidades',mod=p==='Moderación';
+ document.querySelectorAll('#nav [data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===p));
+ ['Inicio','Eventos','Lab','Perfil'].forEach(v=>$('view'+v).classList.toggle('hidden',v!==p));
+ $('communityView').classList.add('hidden');$('grid').classList.toggle('hidden',!com);$('introMain').classList.toggle('hidden',!com);$('moderatorView').classList.toggle('hidden',!mod);
+ document.querySelector('.controls').style.display=com?'':'none';
+ $('pageTitle').textContent=p;activeCommunity=null;stopPostsListener();
+ if(p==='Perfil')fillProfileForm();
+ drawViews();
+}
+function drawViews(){if(!currentUser)return;({Inicio:drawInicio,Eventos:drawEventos,Lab:drawLab,Perfil:drawPerfil,'Moderación':drawMod})[page]?.()}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{
+ const p=b.dataset.page;if(p==='Moderación'&&!isMod()){notice('Solo el moderador puede abrir este apartado.');return}showPage(p)});
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){showPage('Comunidades');openCommunity(g.dataset.go);if(g.dataset.tab)setTab(g.dataset.tab)}});
+
+/* ---------- Notificaciones ---------- */
+function notifs(){
+ const muted=LS.get('moedMuted',[]),rem=LS.get('moedRem',[]),now=Date.now(),out=[];
+ feed.forEach(f=>{if(!muted.includes(f.cid))out.push({t:f.t,icon:'📢',text:f.cname+': '+f.text})});
+ events.forEach(e=>{const t=new Date(e.date).getTime();if(t>now&&t-now<7*864e5)out.push({t:ms(e.createdAt),icon:'📅',text:'Evento próximo: '+e.title+' · '+fmtD(e.date)});
+  if(rem.includes(e.id)&&t>now&&t-now<864e5)out.push({t:now,icon:'⏰',text:'Recordatorio: '+e.title+' empieza pronto'})});
+ ideas.filter(i=>i.status==='dev').forEach(i=>out.push({t:ms(i.createdAt),icon:'🧪',text:'En desarrollo: '+i.title}));
+ return out.sort((a,b)=>b.t-a.t)
+}
+function drawBell(){
+ const seen=LS.get('moedSeen',0),n=notifs().filter(x=>x.t>seen).length,b=$('bellN');
+ b.textContent=n>9?'9+':n;b.classList.toggle('hidden',!n);if(!$('npanel').classList.contains('hidden'))drawNPanel();
+}
+function drawNPanel(){
+ const seen=LS.get('moedSeen',0),l=notifs().filter(n=>nTab==='all'||n.t>seen),muted=LS.get('moedMuted',[]);
+ $('nList').innerHTML=l.length?l.map(n=>`<div class="li"><span>${n.icon}</span><div style="flex:1">${esc(n.text)}<div class="tiny">${n.t?ago(n.t):''}${n.t>seen?' · nuevo':''}</div></div></div>`).join(''):'<div class="empty">Todo al día.</div>';
+ $('nMute').innerHTML=communities.filter(c=>joined.has(c.id)).map(c=>`<label class="li" style="cursor:pointer"><input type="checkbox" data-mute="${esc(c.id)}"${muted.includes(c.id)?' checked':''}> ${esc(c.emoji||'')} ${esc(c.name)}</label>`).join('')||'<span class="tiny">Únete a una comunidad para controlar sus avisos.</span>';
+ document.querySelectorAll('[data-nt]').forEach(b=>b.classList.toggle('active',b.dataset.nt===nTab));
+}
+$('bell').onclick=async()=>{const p=$('npanel');p.classList.toggle('hidden');if(!p.classList.contains('hidden')){drawNPanel();loadFeed()}};
+$('nRead').onclick=()=>{LS.set('moedSeen',Date.now());drawBell();drawViews()};
+document.querySelectorAll('[data-nt]').forEach(b=>b.onclick=()=>{nTab=b.dataset.nt;drawNPanel()});
+$('nMute').addEventListener('change',e=>{const id=e.target.dataset.mute;if(!id)return;let m=LS.get('moedMuted',[]);m=e.target.checked?[...new Set([...m,id])]:m.filter(x=>x!==id);LS.set('moedMuted',m);drawBell();drawViews()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('npanel').classList.add('hidden')});
+async function loadFeed(){
+ if(!currentUser)return;const out=[];
+ await Promise.all(communities.filter(c=>joined.has(c.id)).map(async c=>{try{(await getDocs(query(collection(db,'communities',c.id,'posts'),orderBy('createdAt','desc'),limit(3)))).forEach(d=>{const p=d.data();out.push({t:ms(p.createdAt)||Date.now(),cid:c.id,cname:c.name,text:(p.text||'').slice(0,90),kind:'aviso',emoji:c.emoji,art:c.art,author:p.author,likes:(p.likes||[]).length})})}catch(_){}}));
+ feed=out.sort((a,b)=>b.t-a.t);drawBell();drawViews();
+}
+
+/* ---------- Inicio ---------- */
+function drawInicio(){
+ const my=communities.filter(c=>joined.has(c.id)),act=notifs().slice(0,5);
+ $('inHello').textContent='¡Hola, '+currentUser.name+'!';
+ $('inComms').innerHTML='<button class="story" id="storyAdd" type="button"><span class="ring add">🧭</span><small>Explorar</small></button>'+my.map(c=>`<button class="story" data-go="${esc(c.id)}"><span class="ring">${esc(c.emoji||'✨')}</span><small>${esc(c.name)}</small></button>`).join('');$('storyAdd').onclick=()=>showPage('Comunidades');
+ $('inAvisos').innerHTML=feed.slice(0,4).map(f=>`<article class="post" data-go="${esc(f.cid)}" data-tab="posts" style="cursor:pointer"><div class="posthead"><span class="av emo">${esc(f.emoji||'✨')}</span><div style="flex:1;min-width:0"><strong>${esc(f.cname)}</strong><div class="tiny">${esc(f.author||'')}${f.author?' · ':''}${ago(f.t)}</div></div><span class="dots">•••</span></div><div class="media ${esc(f.art||'c1')}"><span>${esc(f.emoji||'✨')}</span></div><div class="acts2"><span>${I.heart}${f.likes||0}</span><span>${I.comment}</span><span class="sp"></span><span>${I.save}</span></div><p>${esc(f.text)}${(f.text||'').length>=90?'… <span class="more">más</span>':''}</p></article>`).join('')||'<span class="tiny">Sin avisos todavía.</span>';
+ $('inAct').innerHTML=act.map(n=>`<div class="li"><span>${n.icon}</span><div style="flex:1">${esc(n.text)}</div></div>`).join('')||'<span class="tiny">Nada nuevo por ahora.</span>';
+ const seen=LS.get('moedSeen',0);
+ $('inStats').innerHTML=[[my.length,'Comunidades'],[events.filter(e=>new Date(e.date).getTime()>Date.now()).length,'Eventos próximos'],[ideas.length,'Ideas en el Lab'],[notifs().filter(n=>n.t>seen).length,'Novedades']].map(([v,l])=>`<div class="tile"><b>${v}</b><span>${l}</span></div>`).join('');
+}
+
+/* ---------- Publicaciones mejoradas ---------- */
+renderPosts=function(){
+ const sp=posts.filter(p=>p.kind==='sorpresa').pop();
+ if(sp&&currentUser&&currentUser.role!=='moderador'){try{const k='sorpresa_'+sp.id;if(!localStorage.getItem(k)){localStorage.setItem(k,'1');confetti();notice('🎁 ¡Hay una sorpresa en los avisos!')}}catch(_){}}
+ $('tagBar').innerHTML=['','Ideas','Ayuda','Novedades'].map(t=>`<button class="chip${tagFilter===t?' on':''}" data-tag="${t}">${t?'#'+t:'Todos'}</button>`).join('');
+ const uid=currentUser&&currentUser.uid,mod=isMod();
+ const l=posts.filter(p=>!tagFilter||p.tag===tagFilter).slice().reverse().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0));
+ $('posts').innerHTML=l.length?l.map(p=>{
+  const id=esc(p.id),lk=p.likes||[],own=currentUser&&(p.authorId===uid||mod),sv=profile.saved&&profile.saved[activeCommunity+'__'+p.id];
+  return `<article class="post${p.kind==='sorpresa'?' surprise':''}"><div class="posthead"><span class="av" data-prof="${esc(p.authorId||'')}" style="cursor:pointer">${esc((p.author||'?').charAt(0).toUpperCase())}</span><div style="flex:1;min-width:0"><strong data-prof="${esc(p.authorId||'')}" style="cursor:pointer">${p.pinned?'📌 ':''}${esc(p.author)}</strong><div class="tiny">${esc(fmt(p.createdAt))}</div></div><span class="dots">•••</span></div>${p.tag?`<span class="chip on" style="cursor:default;margin-bottom:8px;display:inline-block">#${esc(p.tag)}</span>`:''}<p>${esc(p.text)}</p><div class="acts2"><button class="ab${lk.includes(uid)?' liked':''}" data-act="like" data-id="${id}" aria-label="Reaccionar">${I.heart}<span>${lk.length}</span></button><button class="ab" data-act="cm" data-id="${id}" aria-label="Comentarios">${I.comment}</button><button class="ab" data-act="rep" data-id="${id}" aria-label="Reportar">${I.flag}</button><span class="sp"></span>${mod?`<button class="ab txt" data-act="pin" data-id="${id}">${p.pinned?'Desfijar':'Fijar'}</button>`:''}${own?`<button class="ab txt" data-act="del" data-id="${id}">Borrar</button>`:''}<button class="ab${sv?' saved':''}" data-act="save" data-id="${id}" aria-label="${sv?'Quitar de guardados':'Guardar'}">${I.save}</button></div><div class="cmbox${openCmt.has(p.id)?'':' hidden'}" id="cm-${id}"></div></article>`}).join(''):'<div class="empty">Todavía no hay avisos.</div>';
+ openCmt.forEach(loadCm);
+};
+async function loadCm(id){
+ const box=$('cm-'+id);if(!box||!activeCommunity)return;
+ try{const s=await getDocs(query(collection(db,'communities',activeCommunity,'posts',id,'comments'),orderBy('createdAt','asc')));
+  box.innerHTML=s.docs.map(d=>{const c=d.data();return `<div class="li"><div><b>${esc(c.author)}</b> ${esc(c.text)}</div></div>`}).join('')+(joined.has(activeCommunity)?`<form class="chatform" data-cmform="${esc(id)}"><input maxlength="300" placeholder="Escribe un comentario" aria-label="Comentario"><button class="primary" type="submit" aria-label="Enviar">➤</button></form>`:'<div class="tiny">Únete a la comunidad para comentar.</div>')}
+ catch(e){box.textContent='No se pudieron cargar los comentarios.'}
+}
+$('tagBar').addEventListener('click',e=>{const b=e.target.closest('[data-tag]');if(b){tagFilter=b.dataset.tag;renderPosts()}});
+$('posts').addEventListener('submit',async e=>{
+ const f=e.target.closest('[data-cmform]');if(!f)return;e.preventDefault();const i=f.querySelector('input'),text=i.value.trim();if(!text)return;i.value='';
+ try{await addDoc(collection(db,'communities',activeCommunity,'posts',f.dataset.cmform,'comments'),{author:currentUser.name,authorId:currentUser.uid,text,createdAt:serverTimestamp()});loadCm(f.dataset.cmform)}
+ catch(err){i.value=text;notice('No se pudo comentar: '+errMsg(err))}
+});
+$('posts').addEventListener('click',async e=>{
+ const b=e.target.closest('[data-act]');if(!b||!currentUser)return;
+ const id=b.dataset.id,a=b.dataset.act,p=posts.find(x=>x.id===id);if(!p)return;const ref=doc(db,'communities',activeCommunity,'posts',id);
+ try{
+  if(a==='like'){const has=(p.likes||[]).includes(currentUser.uid);await updateDoc(ref,{likes:has?arrayRemove(currentUser.uid):arrayUnion(currentUser.uid)})}
+  else if(a==='cm'){if(openCmt.has(id))openCmt.delete(id);else openCmt.add(id);renderPosts()}
+  else if(a==='save'){
+   const k=activeCommunity+'__'+id,has=profile.saved&&profile.saved[k],item={c:activeCommunity,t:(p.text||'').slice(0,100)};
+   await updateDoc(doc(db,'users',currentUser.uid),{['saved.'+k]:has?deleteField():item});
+   profile.saved=profile.saved||{};if(has)delete profile.saved[k];else profile.saved[k]=item;
+   renderPosts();notice(has?'Quitado de guardados.':'Guardado para después.')}
+  else if(a==='rep'){if(!confirm('¿Reportar este aviso a los moderadores?'))return;await addDoc(collection(db,'reports'),{cid:activeCommunity,pid:id,text:(p.text||'').slice(0,120),by:currentUser.name,resolved:false,createdAt:serverTimestamp()});notice('Reporte enviado.')}
+  else if(a==='pin'){await updateDoc(ref,{pinned:!p.pinned});logAct((p.pinned?'Desfijó':'Fijó')+' un aviso')}
+  else if(a==='del'){await deleteDoc(ref);notice('Publicación borrada.')}
+ }catch(err){notice('No se pudo completar: '+errMsg(err))}
+});
+$('publish').onclick=async()=>{
+ if(!isMod()){notice('Solo el moderador puede publicar avisos.');return}
+ const text=$('postText').value.trim();if(!text){notice('Escribe algo antes de publicar.');return}
+ $('publish').disabled=true;
+ try{await addDoc(collection(db,'communities',activeCommunity,'posts'),{author:currentUser.name,authorId:currentUser.uid,text,tag:$('postTag').value,likes:[],pinned:false,createdAt:serverTimestamp()});$('postText').value='';notice('¡Aviso publicado!');logAct('Publicó un aviso')}
+ catch(e){notice('No se pudo publicar: '+errMsg(e))}finally{$('publish').disabled=false}
+};
+
+/* ---------- Eventos ---------- */
+function drawEventos(){
+ const mod=isMod(),rem=LS.get('moedRem',[]);$('evNew').classList.toggle('hidden',!mod);
+ const l=events.filter(e=>new Date(e.date).getTime()>Date.now()-108e5);
+ $('evList').innerHTML=l.length?l.map(e=>{
+  const a=e.attendees||[],me=a.includes(currentUser.uid),full=e.cap&&a.length>=e.cap&&!me,id=esc(e.id);
+  return `<article class="community card2 evcard" style="margin-bottom:14px"><h3 style="margin:0 0 4px">${esc(e.title)}</h3><div class="tiny">${esc(fmtD(e.date))}${e.comm?' · '+esc(e.comm):''}</div><p style="margin:8px 0">${esc(e.desc||'')}</p><div class="row"><button class="join${me?' joined':''}" style="width:auto;margin:0;padding:8px 16px" data-ev="${id}"${full?' disabled':''}>${me?'✓ Apuntado':full?'Completo':'Apuntarme'}</button><button class="filter" data-rem="${id}">${rem.includes(e.id)?'🔔 Recordatorio activo':'🔔 Recordarme'}</button><span class="tiny">👥 ${a.length}${e.cap?'/'+e.cap:''}</span>${mod?`<button class="filter" data-evdel="${id}">Borrar</button>`:''}</div>${mod&&(e.names||[]).length?`<details style="margin-top:8px"><summary class="tiny">Participantes (${e.names.length})</summary><div class="tiny">${e.names.map(esc).join(', ')}</div></details>`:''}</article>`}).join(''):'<div class="empty">No hay eventos próximos.</div>';
+}
+$('evNew').onclick=()=>$('evForm').classList.toggle('hidden');
+$('evForm').onsubmit=async e=>{
+ e.preventDefault();if(!isMod())return;
+ try{await addDoc(collection(db,'events'),{title:$('evTitle').value.trim(),date:$('evDate').value,comm:$('evComm').value.trim(),desc:$('evDesc').value.trim(),cap:+$('evCap').value||0,attendees:[],names:[],authorId:currentUser.uid,createdAt:serverTimestamp()});
+  $('evForm').reset();$('evForm').classList.add('hidden');notice('Evento creado.');logAct('Creó el evento «'+$('evTitle').value+'»')}
+ catch(err){notice('No se pudo crear: '+errMsg(err))}
+};
+$('evList').addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;
+ try{
+  if(b.dataset.ev){const ev=events.find(x=>x.id===b.dataset.ev),has=(ev.attendees||[]).includes(currentUser.uid);
+   await updateDoc(doc(db,'events',ev.id),{attendees:has?arrayRemove(currentUser.uid):arrayUnion(currentUser.uid),names:has?arrayRemove(currentUser.name):arrayUnion(currentUser.name)});notice(has?'Te has desapuntado.':'¡Apuntado!')}
+  else if(b.dataset.rem){let r=LS.get('moedRem',[]);r=r.includes(b.dataset.rem)?r.filter(x=>x!==b.dataset.rem):[...r,b.dataset.rem];LS.set('moedRem',r);drawEventos();drawBell()}
+  else if(b.dataset.evdel){if(!confirm('¿Borrar este evento?'))return;await deleteDoc(doc(db,'events',b.dataset.evdel));notice('Evento borrado.')}
+ }catch(err){notice('No se pudo completar: '+errMsg(err))}
+});
+
+/* ---------- MOED Lab ---------- */
+function drawLab(){
+ document.querySelectorAll('[data-lab]').forEach(b=>b.classList.toggle('active',b.dataset.lab===labTab));
+ const mod=isMod(),l=ideas.filter(i=>(i.status||'ideas')===labTab).sort((a,b)=>(b.votes||[]).length-(a.votes||[]).length);
+ $('labList').innerHTML=l.length?l.map(i=>{const v=i.votes||[],me=v.includes(currentUser.uid),id=esc(i.id);
+  return `<div class="li"><div style="flex:1;min-width:0"><b>${esc(i.title)}</b><div class="tiny">${esc(i.desc||'')}${i.desc?' · ':''}${esc(i.author||'')}</div></div>${mod?`<select class="select" data-st="${id}" aria-label="Estado">${Object.entries(ST).map(([k,n])=>`<option value="${k}"${(i.status||'ideas')===k?' selected':''}>${n}</option>`).join('')}</select>`:''}<button class="join${me?' joined':''}" style="width:auto;margin:0;padding:8px 12px" data-vote="${id}" aria-label="Votar">▲ ${v.length}</button></div>`}).join(''):'<div class="empty">Todavía no hay nada aquí.</div>';
+}
+document.querySelectorAll('[data-lab]').forEach(b=>b.onclick=()=>{labTab=b.dataset.lab;drawLab()});
+$('ideaNew').onclick=()=>$('ideaForm').classList.toggle('hidden');
+$('ideaForm').onsubmit=async e=>{
+ e.preventDefault();
+ try{await addDoc(collection(db,'ideas'),{title:$('ideaTitle').value.trim(),desc:$('ideaDesc').value.trim(),status:'ideas',votes:[currentUser.uid],author:currentUser.name,authorId:currentUser.uid,createdAt:serverTimestamp()});
+  $('ideaForm').reset();$('ideaForm').classList.add('hidden');labTab='ideas';notice('¡Idea enviada!')}
+ catch(err){notice('No se pudo enviar: '+errMsg(err))}
+};
+$('labList').addEventListener('click',async e=>{
+ const b=e.target.closest('[data-vote]');if(!b)return;const i=ideas.find(x=>x.id===b.dataset.vote),has=(i.votes||[]).includes(currentUser.uid);
+ try{await updateDoc(doc(db,'ideas',i.id),{votes:has?arrayRemove(currentUser.uid):arrayUnion(currentUser.uid)})}catch(err){notice('No se pudo votar: '+errMsg(err))}
+});
+$('labList').addEventListener('change',async e=>{
+ const id=e.target.dataset.st;if(!id)return;
+ try{await updateDoc(doc(db,'ideas',id),{status:e.target.value});logAct('Movió una idea a «'+ST[e.target.value]+'»')}catch(err){notice('No se pudo cambiar: '+errMsg(err))}
+});
+
+/* ---------- Perfil ---------- */
+function fillProfileForm(){
+ $('pfName').value=currentUser.name;$('pfBio').value=profile.bio||'';$('pfPriv').value=profile.privacy||'publica';
+ $('pfAvPick').innerHTML=AV.map(a=>`<button type="button" data-av="${a}" aria-label="Avatar ${a}">${a}</button>`).join('');drawAvPick();
+}
+function drawAvPick(){const a=$('pfAv');if(profile.photo){a.style.backgroundImage='url('+profile.photo+')';a.textContent=''}else{a.style.backgroundImage='';a.textContent=profile.avatar||currentUser.name.charAt(0).toUpperCase()}$('pfPhotoDel').classList.toggle('hidden',!profile.photo);document.querySelectorAll('[data-av]').forEach(b=>b.classList.toggle('on',!profile.photo&&b.dataset.av===profile.avatar))}
+$('pfAvPick').addEventListener('click',e=>{const b=e.target.closest('[data-av]');if(b){profile.avatar=b.dataset.av;profile.photo='';drawAvPick()}});
+function drawPerfil(){
+ const my=communities.filter(c=>joined.has(c.id)),mine=ideas.filter(i=>i.authorId===currentUser.uid).length,att=events.filter(e=>(e.attendees||[]).includes(currentUser.uid)).length;
+ $('pfUser').textContent=currentUser.name;
+ $('pfCheck').innerHTML=isMod()?'<svg class="vf" viewBox="0 0 24 24" aria-label="Moderador"><circle cx="12" cy="12" r="10" fill="var(--acc)"/><path d="m7.5 12.3 3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>':'';
+ $('pfRole').textContent=(isMod()?'Moderador':'Miembro')+' · @'+currentUser.name.toLowerCase().replace(/\s+/g,'');
+ $('pfBioView').textContent=profile.bio||'';
+ $('pfStats').innerHTML=[[my.length,'Comunidades'],[mine,'Ideas'],[att,'Eventos']].map(([v,l])=>`<div class="stat"><b>${v}</b><small>${l}</small></div>`).join('');
+ $('pfComms').innerHTML=my.map(c=>`<button class="chip" data-go="${esc(c.id)}">${esc(c.emoji||'✨')} ${esc(c.name)}</button>`).join('')||'<span class="tiny">Todavía ninguna.</span>';
+ const b=[];if(my.length)b.push(['🌟','Primer paso']);if(my.length>=3)b.push(['🧭','Explorador']);if(mine)b.push(['💡','Inventor']);if(att)b.push(['🎟','Asistente']);if(isMod())b.push(['🛡','Guardián']);
+ $('pfBadges').innerHTML=b.map(x=>`<span class="hexb"><i>${x[0]}</i><small>${x[1]}</small></span>`).join('')||'<span class="tiny">Únete a una comunidad para ganar tu primera insignia.</span>';
+ const sv=Object.entries(profile.saved||{});
+ $('pfSaved').innerHTML=sv.map(([k,v])=>`<div class="li" data-go="${esc(v.c)}" data-tab="posts"><div style="flex:1">${esc(v.t)}</div></div>`).join('')||'<span class="tiny">Los avisos que guardes aparecerán aquí.</span>';
+ $('pfAcc').innerHTML=ACC.map(([c,n])=>`<button class="sw${THEME.acc===c?' on':''}" style="background:${c}" data-acc="${c}" aria-label="${n}" title="${n}"></button>`).join('');
+ document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('chip',true)),document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x.dataset.mode===THEME.mode));
+}
+$('pfSave').onclick=async()=>{
+ const name=$('pfName').value.trim()||currentUser.name,data={name,bio:$('pfBio').value.trim(),avatar:profile.avatar||'',photo:profile.photo||'',privacy:$('pfPriv').value};
+ try{await updateDoc(doc(db,'users',currentUser.uid),data);currentUser.name=name;Object.assign(profile,data);notice('Perfil guardado.');render()}
+ catch(e){notice('No se pudo guardar: '+errMsg(e))}
+};
+$('viewPerfil').addEventListener('click',e=>{
+ const a=e.target.closest('[data-acc]'),m=e.target.closest('[data-mode]');
+ if(a){THEME.acc=a.dataset.acc;applyTheme()}if(m){THEME.mode=m.dataset.mode;applyTheme()}
+});
+$('themeBtn').onclick=()=>{THEME.mode=THEME.mode==='dark'?'light':'dark';applyTheme()};
+
+/* ---------- Moderación 2.0 ---------- */
+function drawMod(){
+ if(!isMod())return;const open=reports.filter(r=>!r.resolved);
+ $('mdStats').innerHTML=[[communities.length,'Comunidades'],[communities.reduce((n,c)=>n+Math.max(0,c.members||0),0),'Miembros'],[codes.filter(codeOpen).length+'/'+codes.length,'Invitaciones libres'],[open.length,'Reportes abiertos']].map(([v,l])=>`<div class="tile"><b>${v}</b><span>${l}</span></div>`).join('');
+ $('mdReports').innerHTML=open.length?open.map(r=>`<div class="li"><div style="flex:1;min-width:0"><b>${esc(r.by)}</b> reportó: ${esc(r.text)}</div><button class="filter" data-rres="${esc(r.id)}">Resolver</button><button class="filter" data-rdel="${esc(r.id)}" data-c="${esc(r.cid)}" data-p="${esc(r.pid)}">Borrar aviso</button></div>`).join(''):'<span class="tiny">Sin reportes pendientes.</span>';
+ $('mdLog').innerHTML=mlog.length?mlog.map(m=>`<div class="li"><div style="flex:1">${esc(m.text)}<div class="tiny">${esc(m.by||'')} · ${m.createdAt?ago(ms(m.createdAt)):''}</div></div></div>`).join(''):'<span class="tiny">Aún no hay acciones registradas.</span>';
+}
+$('mdReports').addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;
+ try{
+  if(b.dataset.rdel){if(!confirm('¿Borrar el aviso reportado?'))return;await deleteDoc(doc(db,'communities',b.dataset.c,'posts',b.dataset.p));await updateDoc(doc(db,'reports',b.dataset.rdel),{resolved:true});logAct('Borró un aviso reportado')}
+  else if(b.dataset.rres){await updateDoc(doc(db,'reports',b.dataset.rres),{resolved:true});logAct('Resolvió un reporte')}
+ }catch(err){notice('No se pudo completar: '+errMsg(err))}
+});
+$('newCodeLogged').addEventListener('click',()=>logAct('Generó un código de invitación'));
+$('regSwitch').addEventListener('click',()=>logAct(regOpen?'Cerró los registros':'Abrió los registros'));
+const _refreshDrawer=refreshDrawer;
+refreshDrawer=function(){_refreshDrawer();$('stRep').textContent=reports.filter(r=>!r.resolved).length;$('stEv').textContent=events.filter(e=>new Date(e.date).getTime()>Date.now()).length};
+
+/* ---------- Arranque ---------- */
+function startExtras(){
+ const E=n=>e=>notice(n+': '+errMsg(e));
+ stopEv=onSnapshot(query(collection(db,'events'),orderBy('date','asc')),s=>{events=s.docs.map(d=>({id:d.id,...d.data({serverTimestamps:'estimate'})}));drawBell();drawViews()},E('Eventos'));
+ stopId=onSnapshot(query(collection(db,'ideas'),orderBy('createdAt','desc')),s=>{ideas=s.docs.map(d=>({id:d.id,...d.data({serverTimestamps:'estimate'})}));drawBell();drawViews()},E('Lab'));
+ getDoc(doc(db,'users',currentUser.uid)).then(s=>{profile=s.data()||{};if(profile.avatar)$('avatar').textContent=profile.avatar;drawViews()}).catch(()=>{});
+ if(isMod()){
+  stopRep=onSnapshot(query(collection(db,'reports'),orderBy('createdAt','desc')),s=>{reports=s.docs.map(d=>({id:d.id,...d.data()}));drawViews();liveDrawer()},E('Reportes'));
+  stopLog=onSnapshot(query(collection(db,'modLog'),orderBy('createdAt','desc'),limit(15)),s=>{mlog=s.docs.map(d=>({id:d.id,...d.data({serverTimestamps:'estimate'})}));drawViews()},()=>{});
+ }
+ loadFeed();clearInterval(feedTimer);feedTimer=setInterval(loadFeed,6e4);
+}
+const _stopAll=stopAll;
+stopAll=function(){_stopAll();[stopEv,stopId,stopRep,stopLog].forEach(f=>f&&f());stopEv=stopId=stopRep=stopLog=null;clearInterval(feedTimer);started=false;events=[];ideas=[];feed=[];reports=[];mlog=[];profile={}};
+const _render=render;
+render=function(){
+ _render();if(!currentUser)return;
+ if(!started){started=true;startExtras();showPage('Inicio')}
+ if(profile.avatar)$('avatar').textContent=profile.avatar;
+ drawViews();
+};
+/* ---------- Crear (＋) ---------- */
+document.querySelectorAll('#nav [data-page]').forEach(b=>b.setAttribute('aria-label',b.textContent.trim()));
+const closeQuick=()=>$('quick').classList.add('hidden');
+$('plusBtn').onclick=()=>{
+ $('quickActs').innerHTML='<button class="act" data-q="idea">💡 Proponer idea</button><button class="act" data-q="lab">🧪 MOED Lab</button>'+(isMod()?'<button class="act" data-q="event">📅 Crear evento</button><button class="act" data-q="comm">＋ Nueva comunidad</button><button class="act" data-q="mod">🛡 Moderación</button>':'');
+ $('quick').classList.remove('hidden')};
+$('quickClose').onclick=closeQuick;$('quick').onclick=e=>{if(e.target===$('quick'))closeQuick()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuick()});
+$('quickActs').onclick=e=>{const b=e.target.closest('[data-q]');if(!b)return;closeQuick();const q=b.dataset.q;
+ if(q==='idea'){showPage('Lab');$('ideaForm').classList.remove('hidden');$('ideaTitle').focus()}
+ else if(q==='lab')showPage('Lab');
+ else if(q==='event'){showPage('Eventos');$('evForm').classList.remove('hidden');$('evTitle').focus()}
+ else if(q==='comm'){$('modalback').style.display='grid';$('newName').focus()}
+ else if(q==='mod')showPage('Moderación')};
+const HELP_EMAIL='moedweb@gmail.com',VF='<svg class="vf" viewBox="0 0 24 24" aria-label="Verificado"><circle cx="12" cy="12" r="10" fill="var(--acc)"/><path d="m7.5 12.3 3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const profAv=(photo,av,name)=>{const ok=typeof photo==='string'&&/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(photo);return `<div class="pfav"${ok?` style="background-image:url(${photo})"`:''}>${ok?'':esc(av||(name||'?').charAt(0).toUpperCase())}</div>`};
+const mailRow=m=>`<div style="margin-top:8px">✉️ <a href="mailto:${esc(m)}" style="color:var(--acc)">${esc(m)}</a></div>`;
+const showProf=h=>{$('profBody').innerHTML=h;$('profBack').style.display='grid'};
+const closeProf=()=>{$('profBack').style.display='none'};
+async function openProfile(uid){
+ if(!uid||!currentUser)return;
+ try{
+  const sn=await getDoc(doc(db,'users',uid));
+  if(!sn.exists()){notice('Ese perfil ya no existe.');return}
+  const d=sn.data(),priv=d.privacy==='privada'&&uid!==currentUser.uid&&!isMod(),mod=d.role==='moderador';
+  const since=d.createdAt&&d.createdAt.toDate?d.createdAt.toDate().toLocaleDateString('es-ES',{month:'short',year:'numeric'}):'';
+  showProf(`<div class="pfhead">${profAv(d.photo,d.avatar,d.name)}<div class="pfstats">${priv?'':`<div class="stat"><b>${(d.joined||[]).length}</b><small>Comunidades</small></div>${since?`<div class="stat"><b>${esc(since)}</b><small>Desde</small></div>`:''}`}</div></div><div class="pfinfo"><strong>${esc(d.name||'Usuario')}</strong>${mod?VF:''}<div class="tiny">${mod?'Moderador':'Miembro'}</div>${priv?'<div class="tiny" style="margin-top:8px">🔒 Perfil privado</div>':`${d.bio?`<div style="margin-top:6px;line-height:1.4">${esc(d.bio)}</div>`:''}${d.email?mailRow(d.email):''}`}</div>`)
+ }catch(e){notice('No se pudo abrir el perfil: '+errMsg(e))}
+}
+function openHelp(){showProf(`<div class="pfhead"><div class="pfav">🛟</div></div><div class="pfinfo"><strong>MOED Ayuda</strong>${VF}<div class="tiny">Soporte</div><div style="margin-top:6px;line-height:1.4">¿Dudas o algún problema? Escríbenos y te ayudamos.</div>${mailRow(HELP_EMAIL)}<ul style="margin:12px 0 0;padding-left:18px;line-height:1.7;color:var(--muted)"><li>Únete a una comunidad desde «Comunidades».</li><li>Publica o crea cosas con el botón ＋.</li><li>Si no puedes entrar, pide un código de invitación a un moderador.</li></ul></div>`)}
+$('profClose').onclick=closeProf;$('profBack').onclick=e=>{if(e.target===$('profBack'))closeProf()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProf()});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-prof]');if(t)openProfile(t.dataset.prof)});
+$('helpBtn').onclick=openHelp;
+$('pfPhotoBtn').onclick=()=>$('pfPhotoFile').click();
+$('pfPhotoFile').onchange=e=>{
+ const f=e.target.files[0];e.target.value='';if(!f)return;
+ if(!f.type.startsWith('image/')){notice('Elige una imagen.');return}
+ const img=new Image(),url=URL.createObjectURL(f);
+ img.onload=()=>{const S=256,c=document.createElement('canvas');c.width=c.height=S;const m=Math.min(img.width,img.height);c.getContext('2d').drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,S,S);URL.revokeObjectURL(url);profile.photo=c.toDataURL('image/jpeg',.82);drawAvPick();notice('Foto lista. Pulsa «Guardar perfil».')};
+ img.onerror=()=>{URL.revokeObjectURL(url);notice('No se pudo leer esa imagen.')};
+ img.src=url};
+$('pfPhotoDel').onclick=()=>{profile.photo='';drawAvPick()};
+/* ---------- Código por Discord ---------- */
+const DISCORD_INVITE=''; // pega aquí el enlace de invitación de tu servidor de Discord
+if(DISCORD_INVITE){$('discordJoin').href=DISCORD_INVITE;$('discordJoin').classList.remove('hidden')}
+$('discordReq').onclick=async()=>{
+ const u=$('discordUser').value.trim(),b=$('discordReq');
+ if(u.length<2){notice('Escribe tu usuario de Discord.');return}
+ b.disabled=true;
+ try{
+  const r=await fetch('/.netlify/functions/discord-codigo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u})});
+  const d=await r.json().catch(()=>({}));
+  notice(d.message||(r.ok?'Revisa tus mensajes privados de Discord.':'No se pudo enviar el código.'));
+ }catch(e){notice('No se pudo conectar. Inténtalo de nuevo.')}
+ finally{b.disabled=false}
+};
+$('discordUser').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('discordReq').click()}});
+
+/* ---------- App instalable (PWA) ---------- */
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+{const tc=document.querySelector('meta[name="theme-color"]'),setTC=()=>tc&&tc.setAttribute('content',document.body.classList.contains('dark')?'#0f1113':'#f3f5f8');setTC();new MutationObserver(setTC).observe(document.body,{attributes:true,attributeFilter:['class']})}
+let deferredInstall=null;
+const isApp=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e});
+addEventListener('appinstalled',()=>{$('installCard').classList.add('hidden')});
+if(isApp())$('installCard').classList.add('hidden');
+$('installBtn').onclick=async()=>{
+ if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice.catch(()=>{});deferredInstall=null;return}
+ showProf('<div class="pfinfo" style="margin-top:0"><strong>Instalar MOED+</strong><ol style="margin:12px 0 0;padding-left:20px;line-height:1.8"><li>Abre esta web en <b>Safari</b>.</li><li>Pulsa el botón <b>Compartir</b> (el cuadrado con la flecha hacia arriba).</li><li>Elige <b>Añadir a pantalla de inicio</b> y luego <b>Añadir</b>.</li></ol><div class="tiny" style="margin-top:10px">Después ábrela desde el icono M+ y se verá a pantalla completa.</div></div>')
+};
+$('logoutBtn').onclick=()=>$('accountButton').click();
+applyTheme();
+</script>
+</body></html>

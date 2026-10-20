@@ -1,0 +1,16 @@
+{
+  "name": "MOED+",
+  "short_name": "MOED+",
+  "description": "Comunidad MOED",
+  "start_url": "./moed_comunidad_demo.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f1113",
+  "theme_color": "#0f1113",
+  "lang": "es",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

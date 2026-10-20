@@ -1,0 +1,133 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isMod() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in ['moedweb@gmail.com'];
+    }
+
+    function isMember() {
+      return request.auth != null
+        && (isMod() || exists(/databases/$(database)/documents/users/$(request.auth.uid)));
+    }
+
+    function cfg() { return /databases/$(database)/documents/config/registro; }
+    function inv(code) { return /databases/$(database)/documents/inviteCodes/$(code); }
+
+    // Código con usos: maxUses 0 = ilimitados; sin maxUses = 1 uso (códigos antiguos)
+    function invOpen(d) {
+      return d.get('used', false) == false
+        && (d.get('maxUses', 1) == 0 || d.get('uses', 0) < d.get('maxUses', 1));
+    }
+
+    function registrosAbiertos() {
+      return !exists(cfg()) || get(cfg()).data.get('abiertos', true) == true;
+    }
+
+    match /config/{doc} {
+      allow read, write: if isMod();
+    }
+
+    match /users/{uid} {
+      // NUEVO: cualquier miembro puede ver los perfiles de los demás
+      allow read: if request.auth != null && (request.auth.uid == uid || isMember());
+      allow create: if request.auth != null && request.auth.uid == uid && (
+        isMod()
+        || (request.resource.data.role == 'miembro' && registrosAbiertos() && (
+              (exists(cfg()) && request.resource.data.code == get(cfg()).data.code)
+              || (exists(inv(request.resource.data.code))
+                  && invOpen(get(inv(request.resource.data.code)).data)
+                  && getAfter(inv(request.resource.data.code)).data.get('uses', 0)
+                       == get(inv(request.resource.data.code)).data.get('uses', 0) + 1
+                  && getAfter(inv(request.resource.data.code)).data.lastUsedBy == request.auth.uid)
+           ))
+      );
+      // NUEVO: photo (foto de perfil, texto pequeño en base64)
+      allow update: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['joined', 'role', 'name', 'bio', 'avatar', 'photo', 'privacy', 'saved'])
+        && (!('photo' in request.resource.data)
+            || (request.resource.data.photo is string && request.resource.data.photo.size() <= 200000))
+        && (request.resource.data.role == 'miembro' || isMod());
+      allow delete: if false;
+    }
+
+    match /inviteCodes/{code} {
+      allow list, get, create, delete: if isMod();
+      // NUEVO: cada registro suma 1 uso
+      allow update: if request.auth != null
+        && invOpen(resource.data)
+        && request.resource.data.get('uses', 0) == resource.data.get('uses', 0) + 1
+        && request.resource.data.lastUsedBy == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['uses', 'lastUsedBy', 'usedAt']);
+    }
+
+    match /communities/{cid} {
+      allow read: if isMember();
+      allow create: if isMod();
+      allow update: if isMember()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members']);
+      allow delete: if isMod();
+
+      match /members/{uid} {
+        allow read: if isMember() && (request.auth.uid == uid || isMod());
+        allow write: if isMember() && (request.auth.uid == uid || isMod());
+      }
+      match /messages/{mid} {
+        allow read: if isMember();
+        allow create: if isMember()
+          && request.resource.data.authorId == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 500
+          && exists(/databases/$(database)/documents/communities/$(cid)/members/$(request.auth.uid));
+        allow delete: if isMember() && (resource.data.authorId == request.auth.uid || isMod());
+      }
+      match /posts/{pid} {
+        allow read: if isMember();
+        allow create: if isMod() && request.resource.data.authorId == request.auth.uid;
+        // el moderador edita todo (fijar); los miembros solo likes
+        allow update: if isMod()
+          || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes']));
+        allow delete: if isMember() && (resource.data.authorId == request.auth.uid || isMod());
+
+        // comentarios
+        match /comments/{id} {
+          allow read: if isMember();
+          allow create: if isMember()
+            && request.resource.data.authorId == request.auth.uid
+            && request.resource.data.text is string
+            && request.resource.data.text.size() <= 300;
+          allow delete: if isMember() && (resource.data.authorId == request.auth.uid || isMod());
+        }
+      }
+    }
+
+    // eventos
+    match /events/{id} {
+      allow read: if isMember();
+      allow create, delete: if isMod();
+      allow update: if isMod()
+        || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['attendees', 'names']));
+    }
+
+    // MOED Lab
+    match /ideas/{id} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.authorId == request.auth.uid;
+      allow update: if isMod()
+        || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['votes']));
+      allow delete: if isMod();
+    }
+
+    // reportes y registro de acciones
+    match /reports/{id} {
+      allow create: if isMember();
+      allow read, update, delete: if isMod();
+    }
+    match /modLog/{id} {
+      allow read, create: if isMod();
+    }
+  }
+}
